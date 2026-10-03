@@ -2,137 +2,101 @@
 <html lang="pt-BR">
 
 <head>
+  <meta charset="UTF-8">
 
-    <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+  <meta
+    name="description"
+    content="Pacotinhos de Amor — conheça nossos animais e ajude a transformar histórias."
+  >
 
-    <meta
-        name="description"
-        content="Pacotinhos de Amor — conheça nossos animais e suas histórias."
-    >
+  <title>Pacotinhos de Amor</title>
 
-    <title>Pacotinhos de Amor</title>
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
-    <!-- Google Fonts -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- CSS -->
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
+  <!-- =====================================================
+       CABEÇALHO
+       ===================================================== -->
 
-<!-- =========================
-     CABEÇALHO
-     ========================= -->
+  <header class="site-header">
 
-<header class="site-header">
+    <a href="#" class="brand">
 
-    <a
-        href="#inicio"
-        class="brand"
-    >
+      <img
+        src="assets/logo.jpg"
+        alt="Logo Pacotinhos de Amor"
+      >
 
-        <img
-            src="assets/logo.jpg"
-            alt="Logo Pacotinhos de Amor"
-        >
-
-        <span>
-            Pacotinhos de Amor
-        </span>
+      <span>Pacotinhos de Amor</span>
 
     </a>
 
+    <nav aria-label="Navegação principal">
 
-    <nav>
+      <a href="#inicio">
+        Início
+      </a>
 
-        <a href="#inicio">
-            Início
-        </a>
+      <a href="#cachorros">
+        Cachorros
+      </a>
 
-        <a href="#cachorros">
-            Cachorros
-        </a>
+      <a href="#gatos">
+        Gatos
+      </a>
 
-        <a href="#gatos">
-            Gatos
-        </a>
-
-        <a href="#contato">
-            Contato
-        </a>
+      <a href="#contato">
+        Contato
+      </a>
 
     </nav>
 
-</header>
+  </header>
 
 
+  <!-- =====================================================
+       HERO
+       ===================================================== -->
 
-<main>
+  <main>
 
+    <section
+      id="inicio"
+      class="hero"
+    >
 
-<!-- =========================
-     PÁGINA INICIAL
-     ========================= -->
+      <div class="hero-content">
 
-<section
-    id="inicio"
-    class="hero"
->
-
-    <div class="hero-content">
-
-        <span class="eyebrow">
-            Cada história importa
-        </span>
-
+        <div class="eyebrow">
+          Projeto Pacotinhos de Amor
+        </div>
 
         <h1>
-
-            Encontre um
-            <span>
-                pacotinho
-            </span>
-            para chamar de seu.
-
+          Cada animal é um
+          <span>pacotinho de amor.</span>
         </h1>
 
-
         <p>
-
-            Conheça os animais do
-            Projeto Pacotinhos de Amor,
-            suas histórias e informações.
-
+          Conheça as histórias dos nossos animais,
+          descubra mais sobre cada um deles e
+          acompanhe suas jornadas.
         </p>
 
 
@@ -140,408 +104,378 @@
 
         <div class="search-box">
 
-            <label for="searchInput">
+          <label for="searchInput">
+            Procure pelo nome do animal
+          </label>
 
-                Buscar por nome do animal
+          <div class="search-row">
 
-            </label>
+            <input
+              type="search"
+              id="searchInput"
+              placeholder="Digite o nome..."
+              autocomplete="off"
+              aria-label="Pesquisar animal pelo nome"
+            >
 
+            <button
+              type="button"
+              id="clearSearch"
+              aria-label="Limpar pesquisa"
+            >
+              Limpar
+            </button>
 
-            <div class="search-row">
+          </div>
 
-                <input
-                    id="searchInput"
-                    type="search"
-                    placeholder="Digite o nome..."
-                    autocomplete="off"
-                >
-
-
-                <button
-                    id="clearSearch"
-                    type="button"
-                >
-
-                    Limpar
-
-                </button>
-
-            </div>
-
-
-            <p
-                id="searchMessage"
-                class="search-message"
-            ></p>
+          <p
+            id="searchMessage"
+            class="search-message"
+          ></p>
 
         </div>
 
+
+        <!-- BOTÕES -->
 
         <div class="hero-actions">
 
-            <a
-                href="#cachorros"
-                class="btn primary"
-            >
-                Ver cachorros
-            </a>
+          <a
+            href="#cachorros"
+            class="btn primary"
+          >
+            Conheça os cachorros
+          </a>
 
-
-            <a
-                href="#gatos"
-                class="btn secondary"
-            >
-                Ver gatos
-            </a>
+          <a
+            href="#gatos"
+            class="btn secondary"
+          >
+            Conheça os gatos
+          </a>
 
         </div>
 
-    </div>
+      </div>
 
 
-    <div class="hero-logo">
+      <!-- LOGO -->
+
+      <div class="hero-logo">
 
         <img
-            src="assets/logo.jpg"
-            alt="Pacotinhos de Amor"
+          src="assets/logo.jpg"
+          alt="Pacotinhos de Amor"
         >
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
 
+    <!-- ===================================================
+         RESULTADOS DA BUSCA
+         =================================================== -->
 
-<!-- =========================
-     RESULTADOS DA BUSCA
-     ========================= -->
+    <section
+      id="resultados"
+      class="section search-results hidden"
+    >
 
-<section
-    id="resultados"
-    class="section search-results hidden"
->
-
-    <div class="section-heading">
+      <div class="section-heading">
 
         <div>
 
-            <span class="eyebrow">
-                Busca
-            </span>
+          <div class="eyebrow">
+            Resultado da busca
+          </div>
 
-            <h2>
-                Resultados
-            </h2>
+          <h2>
+            Animais encontrados
+          </h2>
 
         </div>
 
-    </div>
+      </div>
 
-
-    <div
+      <div
         id="searchGrid"
         class="animal-grid"
-    ></div>
+      ></div>
 
-</section>
+    </section>
 
 
+    <!-- ===================================================
+         CACHORROS
+         =================================================== -->
 
-<!-- =========================
-     CACHORROS
-     ========================= -->
+    <section
+      id="cachorros"
+      class="section"
+    >
 
-<section
-    id="cachorros"
-    class="section"
->
-
-    <div class="section-heading">
+      <div class="section-heading">
 
         <div>
 
-            <span class="eyebrow">
-                Conheça
-            </span>
+          <div class="eyebrow">
+            Nossos animais
+          </div>
 
-            <h2>
-                Cachorros
-            </h2>
+          <h2>
+            Cachorros
+          </h2>
 
         </div>
 
+        <div
+          id="dogCount"
+          class="count"
+        >
+          0 animais
+        </div>
 
-        <span
-            id="dogCount"
-            class="count"
-        ></span>
+      </div>
 
-    </div>
-
-
-    <div
+      <div
         id="dogGrid"
         class="animal-grid"
-    ></div>
+      ></div>
 
-</section>
+    </section>
 
 
+    <!-- ===================================================
+         GATOS
+         =================================================== -->
 
-<!-- =========================
-     GATOS
-     ========================= -->
+    <section
+      id="gatos"
+      class="section alt"
+    >
 
-<section
-    id="gatos"
-    class="section alt"
->
-
-    <div class="section-heading">
+      <div class="section-heading">
 
         <div>
 
-            <span class="eyebrow">
-                Conheça
-            </span>
+          <div class="eyebrow">
+            Nossos animais
+          </div>
 
-            <h2>
-                Gatos
-            </h2>
+          <h2>
+            Gatos
+          </h2>
 
         </div>
 
+        <div
+          id="catCount"
+          class="count"
+        >
+          0 animais
+        </div>
 
-        <span
-            id="catCount"
-            class="count"
-        ></span>
+      </div>
 
-    </div>
-
-
-    <div
+      <div
         id="catGrid"
         class="animal-grid"
-    ></div>
+      ></div>
 
-</section>
+    </section>
 
 
+    <!-- ===================================================
+         CONTATO
+         =================================================== -->
 
-<!-- =========================
-     CONTATO
-     ========================= -->
+    <section
+      id="contato"
+      class="contact-section"
+    >
 
-<section
-    id="contato"
-    class="contact-section"
->
+      <div>
 
-    <div>
-
-        <span class="eyebrow">
-            Fale com o projeto
-        </span>
-
+        <div class="eyebrow">
+          Ajude o projeto
+        </div>
 
         <h2>
-            Ajude um pacotinho
-            a encontrar um lar.
+          Faça parte dessa história.
         </h2>
 
-
         <p>
-
-            Para informações sobre adoção,
-            entre em contato com o
-            Projeto Pacotinhos de Amor.
-
+          Entre em contato com o Pacotinhos de Amor
+          para conhecer melhor o projeto e saber
+          como você pode ajudar.
         </p>
 
-    </div>
+      </div>
 
 
-    <div class="contact-cards">
-
+      <div class="contact-cards">
 
         <a
-            class="contact-card"
-            href="https://wa.me/5511940436900"
-            target="_blank"
-            rel="noopener noreferrer"
+          class="contact-card"
+          href="https://wa.me/5511940436900"
+          target="_blank"
+          rel="noopener noreferrer"
         >
 
-            <span>
-                WhatsApp
-            </span>
+          <span>
+            WhatsApp
+          </span>
 
-            <strong>
-                (11) 94043-6900
-            </strong>
+          <strong>
+            (11) 94043-6900
+          </strong>
 
         </a>
 
 
-
         <a
-            class="contact-card"
-            href="https://instagram.com/projeto.pacotinhodeamor"
-            target="_blank"
-            rel="noopener noreferrer"
+          class="contact-card"
+          href="https://instagram.com/projeto.pacotinhodeamor"
+          target="_blank"
+          rel="noopener noreferrer"
         >
 
-            <span>
-                Instagram
-            </span>
+          <span>
+            Instagram
+          </span>
 
-            <strong>
-                @projeto.pacotinhodeamor
-            </strong>
+          <strong>
+            @projeto.pacotinhodeamor
+          </strong>
 
         </a>
-
 
 
         <div class="contact-card">
 
-            <span>
-                PIX
-            </span>
+          <span>
+            PIX
+          </span>
 
-            <strong>
-                (11) 99489-6555
-            </strong>
+          <strong>
+            (11) 99489-6555
+          </strong>
 
         </div>
 
-    </div>
+      </div>
 
-</section>
+    </section>
 
-</main>
+  </main>
 
 
+  <!-- =====================================================
+       RODAPÉ
+       ===================================================== -->
 
-<!-- =========================
-     RODAPÉ
-     ========================= -->
-
-<footer>
+  <footer>
 
     <p>
-        Pacotinhos de Amor
+      Pacotinhos de Amor
     </p>
 
-    <span>
-        Cada história importa.
-    </span>
+    <p>
+      Cada vida merece uma história de amor.
+    </p>
 
-</footer>
+  </footer>
 
 
+  <!-- =====================================================
+       MODAL DO ANIMAL
+       ===================================================== -->
 
-<!-- =========================
-     MODAL DO ANIMAL
-     ========================= -->
-
-<div
+  <div
     id="animalModal"
     class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalName"
     aria-hidden="true"
->
+  >
 
     <div
-        class="modal-backdrop"
-        data-close
+      class="modal-backdrop"
+      id="modalBackdrop"
     ></div>
 
 
-    <article
-        class="modal-card"
-        role="dialog"
-        aria-modal="true"
-    >
+    <div class="modal-card">
 
-        <button
-            class="modal-close"
-            type="button"
-            data-close
-            aria-label="Fechar"
-        >
-            ×
-        </button>
+      <button
+        type="button"
+        class="modal-close"
+        id="modalClose"
+        aria-label="Fechar"
+      >
+        ×
+      </button>
 
+
+      <div
+        id="modalPhoto"
+        class="modal-photo"
+      ></div>
+
+
+      <div class="modal-content">
 
         <div
-            id="modalPhoto"
-            class="modal-photo"
+          id="modalSpecies"
+          class="tag"
+        ></div>
+
+        <h2 id="modalName"></h2>
+
+        <div
+          id="modalAge"
+          class="modal-age"
+        ></div>
+
+        <div
+          id="modalLitter"
+          class="modal-litter"
         ></div>
 
 
-        <div class="modal-content">
+        <h3>
+          História
+        </h3>
+
+        <p id="modalStory"></p>
 
 
-            <span
-                id="modalSpecies"
-                class="tag"
-            ></span>
+        <h3>
+          Cuidados
+        </h3>
+
+        <p id="modalCare"></p>
 
 
-            <h2
-                id="modalName"
-            ></h2>
+        <div
+          id="modalObs"
+          class="info-block"
+        ></div>
+
+      </div>
+
+    </div>
+
+  </div>
 
 
-            <p
-                id="modalAge"
-                class="modal-age"
-            ></p>
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
 
-
-            <div
-                id="modalLitter"
-                class="modal-litter"
-            ></div>
-
-
-            <div class="modal-section">
-
-                <h3>
-                    História
-                </h3>
-
-                <p
-                    id="modalStory"
-                ></p>
-
-            </div>
-
-
-            <div
-                id="modalCare"
-                class="info-block"
-            ></div>
-
-
-            <div
-                id="modalObs"
-                class="info-block"
-            ></div>
-
-        </div>
-
-    </article>
-
-</div>
-
-
-
-<!-- =========================
-     JAVASCRIPT
-     ========================= -->
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 
