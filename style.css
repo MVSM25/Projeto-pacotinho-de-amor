@@ -628,4 +628,193 @@ footer p{
 
 
 /* =========================================================
-   FOTO DO MOD
+   FOTO DO MODAL
+   ========================================================= */
+
+/*
+   Também usamos contain aqui para que a foto ampliada
+   nunca seja cortada.
+*/
+
+.modal-photo{
+  height:360px;
+  background:
+    linear-gradient(
+      135deg,
+      var(--lavanda-clara),
+      var(--amarelo-claro)
+    );
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.modal-photo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  background:
+    linear-gradient(
+      135deg,
+      var(--lavanda-clara),
+      var(--amarelo-claro)
+    );
+  padding:10px;
+}
+
+.modal-photo .initials{
+  font-size:5rem;
+}
+
+
+/* =========================================================
+   CONTEÚDO DO MODAL
+   ========================================================= */
+
+.modal-content{
+  padding:30px;
+}
+
+.modal-content h2{
+  font-size:2.4rem;
+  margin:10px 0 0;
+}
+
+.modal-age{
+  color:var(--muted);
+  font-weight:700;
+}
+
+.modal-content h3{
+  font-size:1.1rem;
+  margin:26px 0 8px;
+}
+
+.modal-content p{
+  margin-top:0;
+}
+
+.modal-litter{
+  color:var(--lavanda);
+  font-weight:700;
+  margin-top:10px;
+}
+
+.info-block{
+  margin-top:16px;
+  padding:15px 17px;
+  border-radius:15px;
+  background:var(--lavanda-clara);
+  border-left:4px solid var(--lavanda);
+}
+
+.info-block:empty{
+  display:none;
+}
+
+.info-block strong{
+  display:block;
+  color:var(--azul);
+  font-size:.85rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:4px;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+   ========================================================= */
+
+@media(max-width:850px){
+
+  .site-header{
+    padding:10px 16px;
+  }
+
+  nav{
+    gap:12px;
+    font-size:.88rem;
+  }
+
+  .brand span{
+    display:none;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+    padding-top:55px;
+  }
+
+  .hero-logo{
+    order:-1;
+  }
+
+  .hero-logo img{
+    width:min(270px,70vw);
+  }
+
+  .contact-section{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+   ========================================================= */
+
+@media(max-width:520px){
+
+  nav a:nth-child(4){
+    display:none;
+  }
+
+  .hero{
+    min-height:auto;
+  }
+
+  .search-row{
+    flex-direction:column;
+  }
+
+  .search-row button{
+    padding:12px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .section,
+  .contact-section{
+    padding:60px 18px;
+  }
+
+  .section-heading{
+    align-items:start;
+    flex-direction:column;
+  }
+
+  .animal-grid{
+    grid-template-columns:1fr;
+  }
+
+  /*
+     No celular deixamos a área da foto um pouco maior
+     para acomodar melhor fotos verticais.
+  */
+
+  .card-photo{
+    height:250px;
+  }
+
+  .modal-photo{
+    height:300px;
+  }
+
+  .modal-content{
+    padding:22px;
+  }
+}
