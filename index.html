@@ -1,245 +1,709 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
-  <meta
-    name="description"
-    content="Pacotinhos de Amor — conheça nossos animais e ajude a transformar histórias."
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Pacotinhos de Amor</title>
 
-
-  <!-- =====================================================
-       FONTES
-       ===================================================== -->
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
+  <meta
+    name="description"
+    content="Pacotinhos de Amor — conheça nossos animais e acompanhe suas histórias."
   >
 
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <style>
+    :root {
+      --lavanda: #A99CAF;
+      --lavanda-clara: #EEE8F0;
+      --amarelo: #E9E866;
+      --amarelo-claro: #F7F5C9;
+      --azul: #3F4B70;
+      --azul-escuro: #303A5A;
+      --creme: #FCFBF7;
+      --branco: #FFFFFF;
+      --texto: #313444;
+      --muted: #73778A;
+      --borda: #E5E1E7;
+      --sombra: 0 18px 50px rgba(63, 75, 112, .10);
+    }
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
+    * {
+      box-sizing: border-box;
+    }
 
+    html {
+      scroll-behavior: smooth;
+    }
 
-  <!-- =====================================================
-       CSS
-       ===================================================== -->
+    body {
+      margin: 0;
+      background: var(--creme);
+      color: var(--texto);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      line-height: 1.5;
+    }
 
-  <link
-    rel="stylesheet"
-    href="./style.css"
-  >
+    button,
+    input {
+      font: inherit;
+    }
 
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background:
+        linear-gradient(
+          135deg,
+          var(--lavanda-clara),
+          var(--amarelo-claro)
+        );
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .header-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 30px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 90px;
+      height: 90px;
+      border-radius: 22px;
+      object-fit: contain;
+      background: var(--branco);
+      padding: 5px;
+      box-shadow: var(--sombra);
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      color: var(--azul-escuro);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.1;
+    }
+
+    .brand-text p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .contact a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.8);
+      border: 1px solid var(--borda);
+      color: var(--azul-escuro);
+      font-size: .9rem;
+      transition: .2s ease;
+    }
+
+    .contact a:hover {
+      transform: translateY(-1px);
+      background: var(--branco);
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 35px 0 60px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 35px;
+    }
+
+    .intro h2 {
+      margin: 0;
+      color: var(--azul-escuro);
+      font-size: clamp(1.7rem, 4vw, 2.3rem);
+    }
+
+    .intro p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    .search-box {
+      width: min(720px, 100%);
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 17px 52px 17px 20px;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      outline: none;
+      background: var(--branco);
+      color: var(--texto);
+      box-shadow: var(--sombra);
+      font-size: 1rem;
+    }
+
+    .search-box input:focus {
+      border-color: var(--lavanda);
+      box-shadow:
+        0 0 0 3px rgba(169,156,175,.18),
+        var(--sombra);
+    }
+
+    #clearSearch {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    #clearSearch:hover {
+      background: var(--lavanda-clara);
+      color: var(--azul-escuro);
+    }
+
+    #searchMessage {
+      margin-top: 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* =========================
+       RESULTADOS DA BUSCA
+    ========================= */
+
+    #resultados {
+      margin-bottom: 40px;
+    }
+
+    .search-title {
+      color: var(--azul-escuro);
+      margin: 0 0 18px;
+      font-size: 1.4rem;
+    }
+
+    /* =========================
+       SEÇÕES
+    ========================= */
+
+    .animal-section {
+      margin-top: 50px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--azul-escuro);
+      font-size: 1.7rem;
+    }
+
+    .count {
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--lavanda-clara);
+      color: var(--azul-escuro);
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       GRID
+    ========================= */
+
+    .animal-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .animal-card {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+      cursor: pointer;
+    }
+
+    .animal-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 22px 55px rgba(63,75,112,.15);
+    }
+
+    .card-photo {
+      height: 230px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(
+          135deg,
+          var(--lavanda-clara),
+          var(--amarelo-claro)
+        );
+      position: relative;
+    }
+
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background:
+        linear-gradient(
+          135deg,
+          var(--lavanda-clara),
+          var(--amarelo-claro)
+        );
+      padding: 8px;
+    }
+
+    .card-content {
+      padding: 17px;
+    }
+
+    .card-content h3 {
+      margin: 0;
+      color: var(--azul-escuro);
+      font-size: 1.2rem;
+    }
+
+    .card-content p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      margin-top: 11px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--amarelo-claro);
+      color: var(--azul-escuro);
+      font-size: .78rem;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(48,58,90,.62);
+      backdrop-filter: blur(3px);
+    }
+
+    .modal-card {
+      position: relative;
+      z-index: 2;
+      width: min(760px, 100%);
+      max-height: 92vh;
+      overflow-y: auto;
+      background: var(--branco);
+      border-radius: 24px;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.25);
+    }
+
+    .modal-close {
+      position: absolute;
+      z-index: 4;
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.92);
+      color: var(--azul-escuro);
+      font-size: 1.5rem;
+      line-height: 1;
+      box-shadow: 0 5px 15px rgba(0,0,0,.1);
+    }
+
+    .modal-close:hover {
+      background: var(--branco);
+    }
+
+    /* IMPORTANTE:
+       modalPhoto agora é IMG, compatível com o JavaScript.
+    */
+
+    .modal-photo {
+      height: 360px;
+      background:
+        linear-gradient(
+          135deg,
+          var(--lavanda-clara),
+          var(--amarelo-claro)
+        );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .modal-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background:
+        linear-gradient(
+          135deg,
+          var(--lavanda-clara),
+          var(--amarelo-claro)
+        );
+      padding: 10px;
+    }
+
+    .modal-content {
+      padding: 25px;
+    }
+
+    .modal-species {
+      color: var(--lavanda);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: .78rem;
+    }
+
+    .modal-content h2 {
+      margin: 5px 0 15px;
+      color: var(--azul-escuro);
+      font-size: 2rem;
+    }
+
+    .modal-info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .modal-info-item {
+      padding: 13px;
+      border-radius: 14px;
+      background: var(--lavanda-clara);
+    }
+
+    .modal-info-item strong {
+      display: block;
+      color: var(--azul-escuro);
+      font-size: .82rem;
+      margin-bottom: 3px;
+    }
+
+    .modal-info-item span {
+      color: var(--texto);
+      font-size: .92rem;
+    }
+
+    .modal-block {
+      margin-top: 18px;
+    }
+
+    .modal-block h3 {
+      margin: 0 0 6px;
+      color: var(--azul-escuro);
+      font-size: 1rem;
+    }
+
+    .modal-block p {
+      margin: 0;
+      color: var(--texto);
+      white-space: pre-line;
+    }
+
+    /* =========================
+       MENSAGEM VAZIA
+    ========================= */
+
+    .empty-message {
+      grid-column: 1 / -1;
+      padding: 35px 20px;
+      text-align: center;
+      border: 1px dashed var(--borda);
+      border-radius: 18px;
+      background: var(--branco);
+      color: var(--muted);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 35px 16px;
+      text-align: center;
+      background: var(--azul-escuro);
+      color: var(--branco);
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    footer a {
+      color: var(--amarelo);
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================= */
+
+    @media (max-width: 1000px) {
+      .animal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .contact {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .animal-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .modal-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      main,
+      .header-inner {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .brand {
+        flex-direction: column;
+      }
+
+      .brand-logo {
+        width: 105px;
+        height: 105px;
+      }
+
+      .animal-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-photo {
+        height: 250px;
+      }
+
+      .modal-photo {
+        height: 300px;
+      }
+
+      .modal-content {
+        padding: 20px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-
-  <!-- =====================================================
+  <!-- =========================
        CABEÇALHO
-       ===================================================== -->
+  ========================== -->
 
-  <header class="site-header">
+  <header>
+    <div class="header-inner">
 
-    <a
-      href="#inicio"
-      class="brand"
-    >
+      <div class="brand">
 
-      <img
-        src="./assets/logo.jpg"
-        alt="Logo Pacotinhos de Amor"
-      >
+        <img
+          class="brand-logo"
+          src="./assets/logo.jpg"
+          alt="Logo Pacotinhos de Amor"
+          onerror="this.src='./assets/logo.jpg';"
+        >
 
-      <span>
-        Pacotinhos de Amor
-      </span>
+        <div class="brand-text">
+          <h1>Pacotinhos de Amor</h1>
+          <p>Histórias, cuidados e amor por cada animal.</p>
+        </div>
 
-    </a>
+      </div>
 
+      <div class="contact">
 
-    <nav aria-label="Navegação principal">
+        <a
+          href="https://wa.me/5511940436900"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
 
-      <a href="#inicio">
-        Início
-      </a>
+        <a
+          href="https://www.instagram.com/projeto.pacotinhodeamor/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
 
-      <a href="#cachorros">
-        Cachorros
-      </a>
+      </div>
 
-      <a href="#gatos">
-        Gatos
-      </a>
-
-      <a href="#contato">
-        Contato
-      </a>
-
-    </nav>
-
+    </div>
   </header>
 
 
-  <!-- =====================================================
+  <!-- =========================
        CONTEÚDO PRINCIPAL
-       ===================================================== -->
+  ========================== -->
 
   <main>
 
+    <section class="intro">
 
-    <!-- ===================================================
-         INÍCIO
-         =================================================== -->
+      <h2>Conheça nossos pacotinhos de amor 🐾</h2>
 
-    <section
-      id="inicio"
-      class="hero"
-    >
-
-      <div class="hero-content">
-
-        <div class="eyebrow">
-          Projeto Pacotinhos de Amor
-        </div>
-
-
-        <h1>
-          Cada animal é um
-          <span>
-            pacotinho de amor.
-          </span>
-        </h1>
-
-
-        <p>
-          Conheça as histórias dos nossos animais,
-          descubra mais sobre cada um deles e
-          acompanhe suas jornadas.
-        </p>
-
-
-        <!-- BUSCA -->
-
-        <div class="search-box">
-
-          <label for="searchInput">
-            Procure pelo nome do animal
-          </label>
-
-
-          <div class="search-row">
-
-            <input
-              type="search"
-              id="searchInput"
-              placeholder="Digite o nome..."
-              autocomplete="off"
-              aria-label="Pesquisar animal pelo nome"
-            >
-
-
-            <button
-              type="button"
-              id="clearSearch"
-              aria-label="Limpar pesquisa"
-            >
-              Limpar
-            </button>
-
-          </div>
-
-
-          <p
-            id="searchMessage"
-            class="search-message"
-          ></p>
-
-        </div>
-
-
-        <!-- BOTÕES -->
-
-        <div class="hero-actions">
-
-          <a
-            href="#cachorros"
-            class="btn primary"
-          >
-            Conheça os cachorros
-          </a>
-
-
-          <a
-            href="#gatos"
-            class="btn secondary"
-          >
-            Conheça os gatos
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- LOGO -->
-
-      <div class="hero-logo">
-
-        <img
-          src="./assets/logo.jpg"
-          alt="Pacotinhos de Amor"
-        >
-
-      </div>
+      <p>
+        Pesquise pelo nome ou conheça os animais cadastrados.
+      </p>
 
     </section>
 
 
-    <!-- ===================================================
-         RESULTADOS DA BUSCA
-         =================================================== -->
+    <!-- BUSCA -->
 
-    <section
-      id="resultados"
-      class="section search-results hidden"
-    >
+    <section class="search-box">
 
-      <div class="section-heading">
+      <input
+        id="searchInput"
+        type="search"
+        placeholder="Digite o nome do animal..."
+        autocomplete="off"
+        aria-label="Pesquisar animal"
+      >
 
-        <div>
+      <button
+        id="clearSearch"
+        type="button"
+        aria-label="Limpar pesquisa"
+        title="Limpar pesquisa"
+      >
+        ×
+      </button>
 
-          <div class="eyebrow">
-            Resultado da busca
-          </div>
+      <div id="searchMessage"></div>
 
-          <h2>
-            Animais encontrados
-          </h2>
+    </section>
 
-        </div>
 
-      </div>
+    <!-- RESULTADOS DA PESQUISA -->
 
+    <section id="resultados" style="display:none;">
+
+      <h2 class="search-title">
+        Resultado da pesquisa
+      </h2>
 
       <div
         id="searchGrid"
@@ -249,39 +713,27 @@
     </section>
 
 
-    <!-- ===================================================
+    <!-- =========================
          CACHORROS
-         =================================================== -->
+    ========================== -->
 
     <section
       id="cachorros"
-      class="section"
+      class="animal-section"
     >
 
       <div class="section-heading">
 
-        <div>
+        <h2>🐶 Cachorros</h2>
 
-          <div class="eyebrow">
-            Nossos animais
-          </div>
-
-          <h2>
-            Cachorros
-          </h2>
-
-        </div>
-
-
-        <div
+        <span
           id="dogCount"
           class="count"
         >
           0 animais
-        </div>
+        </span>
 
       </div>
-
 
       <div
         id="dogGrid"
@@ -291,39 +743,27 @@
     </section>
 
 
-    <!-- ===================================================
+    <!-- =========================
          GATOS
-         =================================================== -->
+    ========================== -->
 
     <section
       id="gatos"
-      class="section alt"
+      class="animal-section"
     >
 
       <div class="section-heading">
 
-        <div>
+        <h2>🐱 Gatos</h2>
 
-          <div class="eyebrow">
-            Nossos animais
-          </div>
-
-          <h2>
-            Gatos
-          </h2>
-
-        </div>
-
-
-        <div
+        <span
           id="catCount"
           class="count"
         >
           0 animais
-        </div>
+        </span>
 
       </div>
-
 
       <div
         id="catGrid"
@@ -332,211 +772,118 @@
 
     </section>
 
-
-    <!-- ===================================================
-         CONTATO
-         =================================================== -->
-
-    <section
-      id="contato"
-      class="contact-section"
-    >
-
-      <div>
-
-        <div class="eyebrow">
-          Ajude o projeto
-        </div>
-
-
-        <h2>
-          Faça parte dessa história.
-        </h2>
-
-
-        <p>
-          Entre em contato com o Pacotinhos de Amor
-          para conhecer melhor o projeto e saber
-          como você pode ajudar.
-        </p>
-
-      </div>
-
-
-      <div class="contact-cards">
-
-
-        <!-- WHATSAPP -->
-
-        <a
-          class="contact-card"
-          href="https://wa.me/5511940436900"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span>
-            WhatsApp
-          </span>
-
-          <strong>
-            (11) 94043-6900
-          </strong>
-
-        </a>
-
-
-        <!-- INSTAGRAM -->
-
-        <a
-          class="contact-card"
-          href="https://instagram.com/projeto.pacotinhodeamor"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-
-          <span>
-            Instagram
-          </span>
-
-          <strong>
-            @projeto.pacotinhodeamor
-          </strong>
-
-        </a>
-
-
-        <!-- PIX -->
-
-        <div class="contact-card">
-
-          <span>
-            PIX
-          </span>
-
-          <strong>
-            (11) 99489-6555
-          </strong>
-
-        </div>
-
-      </div>
-
-    </section>
-
   </main>
 
 
-  <!-- =====================================================
-       RODAPÉ
-       ===================================================== -->
-
-  <footer>
-
-    <p>
-      Pacotinhos de Amor
-    </p>
-
-    <p>
-      Cada vida merece uma história de amor.
-    </p>
-
-  </footer>
-
-
-  <!-- =====================================================
-       MODAL DOS ANIMAIS
-       ===================================================== -->
+  <!-- =========================
+       MODAL DO ANIMAL
+  ========================== -->
 
   <div
     id="animalModal"
     class="modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modalName"
     aria-hidden="true"
   >
 
-
-    <!-- FUNDO DO MODAL -->
-
     <div
-      class="modal-backdrop"
       id="modalBackdrop"
+      class="modal-backdrop"
     ></div>
 
 
-    <!-- CARD DO MODAL -->
-
-    <div class="modal-card">
-
-
-      <!-- FECHAR -->
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalName"
+    >
 
       <button
-        type="button"
-        class="modal-close"
         id="modalClose"
+        class="modal-close"
+        type="button"
         aria-label="Fechar"
       >
         ×
       </button>
 
 
-      <!-- FOTO -->
+      <!--
+        CORREÇÃO IMPORTANTE:
+        Antes era uma DIV com id="modalPhoto".
+        O JavaScript trabalha com .src e .alt,
+        portanto precisa ser uma imagem.
+      -->
 
-      <div
-        id="modalPhoto"
-        class="modal-photo"
-      ></div>
+      <div class="modal-photo">
 
+        <img
+          id="modalPhoto"
+          src="./assets/logo.jpg"
+          alt="Foto do animal"
+        >
 
-      <!-- CONTEÚDO -->
+      </div>
+
 
       <div class="modal-content">
 
-
         <div
           id="modalSpecies"
-          class="tag"
+          class="modal-species"
         ></div>
 
 
         <h2 id="modalName"></h2>
 
 
-        <div
-          id="modalAge"
-          class="modal-age"
-        ></div>
+        <div class="modal-info">
+
+          <div class="modal-info-item">
+
+            <strong>Idade</strong>
+
+            <span id="modalAge"></span>
+
+          </div>
 
 
-        <div
-          id="modalLitter"
-          class="modal-litter"
-        ></div>
+          <div class="modal-info-item">
+
+            <strong>Ninhada / grupo</strong>
+
+            <span id="modalLitter"></span>
+
+          </div>
+
+        </div>
 
 
-        <h3>
-          História
-        </h3>
+        <div class="modal-block">
+
+          <h3>História</h3>
+
+          <p id="modalStory"></p>
+
+        </div>
 
 
-        <p id="modalStory"></p>
+        <div class="modal-block">
+
+          <h3>Cuidados</h3>
+
+          <p id="modalCare"></p>
+
+        </div>
 
 
-        <h3>
-          Cuidados
-        </h3>
+        <div class="modal-block">
 
+          <h3>Informações importantes</h3>
 
-        <p id="modalCare"></p>
+          <p id="modalObs"></p>
 
-
-        <div
-          id="modalObs"
-          class="info-block"
-        ></div>
+        </div>
 
       </div>
 
@@ -545,19 +892,60 @@
   </div>
 
 
-  <!-- =====================================================
-       JAVASCRIPT
+  <!-- =========================
+       RODAPÉ
+  ========================== -->
 
-       defer = aguarda o HTML ser carregado antes de executar
-       v=5 = força o GitHub Pages/navegador a buscar a nova versão
-       ===================================================== -->
+  <footer>
+
+    <p>
+      <strong>Pacotinhos de Amor 🐾</strong>
+    </p>
+
+    <p>
+      Cada história merece ser conhecida.
+    </p>
+
+    <p>
+      WhatsApp:
+      <a
+        href="https://wa.me/5511940436900"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        (11) 94043-6900
+      </a>
+    </p>
+
+    <p>
+      Instagram:
+      <a
+        href="https://www.instagram.com/projeto.pacotinhodeamor/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @projeto.pacotinhodeamor
+      </a>
+    </p>
+
+  </footer>
+
+
+  <!--
+    IMPORTANTE:
+    O arquivo precisa estar na raiz do repositório
+    com o nome EXATO:
+
+    script.js
+
+    O parâmetro ?v=20261008-01 evita que o GitHub Pages
+    entregue uma versão antiga armazenada no cache.
+  -->
 
   <script
-    src="./script.js?v=5"
+    src="./script.js?v=20261008-01"
     defer
   ></script>
 
-
 </body>
-
 </html>
