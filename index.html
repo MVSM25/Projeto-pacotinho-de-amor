@@ -17,7 +17,10 @@
 
   <title>Pacotinhos de Amor</title>
 
-  <!-- FONTES -->
+
+  <!-- =====================================================
+       FONTES
+       ===================================================== -->
 
   <link
     rel="preconnect"
@@ -35,11 +38,14 @@
     rel="stylesheet"
   >
 
-  <!-- CSS -->
+
+  <!-- =====================================================
+       CSS
+       ===================================================== -->
 
   <link
     rel="stylesheet"
-    href="style.css"
+    href="./style.css"
   >
 
 </head>
@@ -55,12 +61,12 @@
   <header class="site-header">
 
     <a
-      href="#"
+      href="#inicio"
       class="brand"
     >
 
       <img
-        src="assets/logo.jpg"
+        src="./assets/logo.jpg"
         alt="Logo Pacotinhos de Amor"
       >
 
@@ -118,22 +124,17 @@
 
 
         <h1>
-
           Cada animal é um
-
           <span>
             pacotinho de amor.
           </span>
-
         </h1>
 
 
         <p>
-
           Conheça as histórias dos nossos animais,
           descubra mais sobre cada um deles e
           acompanhe suas jornadas.
-
         </p>
 
 
@@ -142,9 +143,7 @@
         <div class="search-box">
 
           <label for="searchInput">
-
             Procure pelo nome do animal
-
           </label>
 
 
@@ -164,9 +163,7 @@
               id="clearSearch"
               aria-label="Limpar pesquisa"
             >
-
               Limpar
-
             </button>
 
           </div>
@@ -188,9 +185,7 @@
             href="#cachorros"
             class="btn primary"
           >
-
             Conheça os cachorros
-
           </a>
 
 
@@ -198,9 +193,7 @@
             href="#gatos"
             class="btn secondary"
           >
-
             Conheça os gatos
-
           </a>
 
         </div>
@@ -213,7 +206,7 @@
       <div class="hero-logo">
 
         <img
-          src="assets/logo.jpg"
+          src="./assets/logo.jpg"
           alt="Pacotinhos de Amor"
         >
 
@@ -284,9 +277,7 @@
           id="dogCount"
           class="count"
         >
-
           0 animais
-
         </div>
 
       </div>
@@ -328,9 +319,7 @@
           id="catCount"
           class="count"
         >
-
           0 animais
-
         </div>
 
       </div>
@@ -366,11 +355,9 @@
 
 
         <p>
-
           Entre em contato com o Pacotinhos de Amor
           para conhecer melhor o projeto e saber
           como você pode ajudar.
-
         </p>
 
       </div>
@@ -378,6 +365,8 @@
 
       <div class="contact-cards">
 
+
+        <!-- WHATSAPP -->
 
         <a
           class="contact-card"
@@ -397,6 +386,8 @@
         </a>
 
 
+        <!-- INSTAGRAM -->
+
         <a
           class="contact-card"
           href="https://instagram.com/projeto.pacotinhodeamor"
@@ -414,6 +405,8 @@
 
         </a>
 
+
+        <!-- PIX -->
 
         <div class="contact-card">
 
@@ -452,7 +445,7 @@
 
 
   <!-- =====================================================
-       MODAL
+       MODAL DOS ANIMAIS
        ===================================================== -->
 
   <div
@@ -465,14 +458,20 @@
   >
 
 
+    <!-- FUNDO DO MODAL -->
+
     <div
       class="modal-backdrop"
       id="modalBackdrop"
     ></div>
 
 
+    <!-- CARD DO MODAL -->
+
     <div class="modal-card">
 
+
+      <!-- FECHAR -->
 
       <button
         type="button"
@@ -480,17 +479,19 @@
         id="modalClose"
         aria-label="Fechar"
       >
-
         ×
-
       </button>
 
+
+      <!-- FOTO -->
 
       <div
         id="modalPhoto"
         class="modal-photo"
       ></div>
 
+
+      <!-- CONTEÚDO -->
 
       <div class="modal-content">
 
@@ -547,10 +548,14 @@
   <!-- =====================================================
        JAVASCRIPT
 
-       ?v=4 força o navegador a carregar a versão nova.
+       defer = aguarda o HTML ser carregado antes de executar
+       v=5 = força o GitHub Pages/navegador a buscar a nova versão
        ===================================================== -->
 
-  <script src="script.js?v=4"></script>
+  <script
+    src="./script.js?v=5"
+    defer
+  ></script>
 
 
 </body>
