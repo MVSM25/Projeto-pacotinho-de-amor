@@ -1,34 +1,22 @@
 /* =====================================================
    PACOTINHOS DE AMOR
    JAVASCRIPT
+   VERSÃO 4
+
+   CORREÇÕES:
+   - Caminhos individuais das fotos
+   - Novos animais do portfólio CERET
+   - Histórias extraídas do portfólio
+   - Correção dos contadores
+   - Correção do modal
+   - Tratamento de erro das imagens
+   - Busca por nome e informações
    ===================================================== */
 
 
 /* =====================================================
-   FUNÇÃO PARA LOCALIZAR A FOTO DO ANIMAL
-   =====================================================
-
-   IMPORTANTE:
-
-   Cada animal possui seu próprio caminho de imagem.
-
-   Exemplo:
-
-   foto: "assets/animais/julinho.jpg"
-
-   Isso permite que irmãos tenham fotos diferentes,
-   mesmo quando compartilham a mesma história.
-
-   Também permite utilizar diferentes extensões:
-
-   .jpg
-   .jpeg
-   .png
-   .webp
-
-   desde que o caminho informado esteja correto.
+   FUNÇÃO PARA LOCALIZAR A FOTO
    ===================================================== */
-
 
 function caminhoFoto(animal) {
 
@@ -49,1217 +37,1309 @@ function caminhoFoto(animal) {
 
 /* =====================================================
    DADOS DOS ANIMAIS
-   =====================================================
-
-   IMPORTANTE:
-
-   Cada animal possui seu próprio cadastro.
-
-   Cada animal também possui sua própria foto.
-
-   Mesmo quando são irmãos, a foto é individual.
-
-   O caminho da foto deve corresponder exatamente ao
-   nome do arquivo existente no GitHub.
-
-   Exemplo:
-
-   foto: "assets/animais/she-ra.jpg"
-
    ===================================================== */
-
 
 const animais = [
 
-    /* =================================================
-       CACHORROS
-       ================================================= */
 
+/* =====================================================
+   CACHORROS
+   ===================================================== */
 
-    {
-        nome: "Julinho",
-        especie: "cachorro",
-        idade: "1 ano",
 
-        foto: "assets/animais/julinho.jpg",
+{
+    nome: "Julinho",
+    especie: "cachorro",
+    idade: "1 ano",
+    foto: "assets/animais/julinho.jpg",
 
-        historia:
-            "Julinho foi encontrado no estacionamento de uma farmácia na Chácara Santo Antônio, sozinho e precisando de ajuda. Hoje está seguro e aguarda uma família responsável e cheia de amor para chamar de sua.",
+    historia:
+        "Julinho foi encontrado no estacionamento de uma farmácia na Chácara Santo Antônio, sozinho e precisando de ajuda. Hoje está seguro e aguarda uma família responsável e cheia de amor para chamar de sua.",
 
-        cuidados:
-            "Vacinado • Vermifugado • Castrado • Porte médio"
-    },
+    cuidados:
+        "Vacinado • Vermifugado • Castrado • Porte médio"
+},
 
 
-    {
-        nome: "Luna",
-        especie: "cachorro",
-        idade: "24.08.22",
+{
+    nome: "Luna",
+    especie: "cachorro",
+    idade: "24.08.22",
+    foto: "assets/animais/luna.jpg",
 
-        foto: "assets/animais/luna.jpg",
+    historia:
+        "Luna foi resgatada ainda na barriga da mãe, em 2022. Sua mãe estava grávida e sendo agredida nas ruas, mas, infelizmente, apenas Luna sobreviveu. Hoje, ela é uma cachorra muito carinhosa e protetora com humanos. Ama passear e receber carinho na barriga! É de porte grande, daquelas que parecem um verdadeiro urso de pelúcia. Por não se dar bem com gatos e ter dificuldades com alguns cães, Luna seria mais feliz como filha única, recebendo todo o amor e atenção de sua família. Agora, ela espera encontrar um lar onde possa ser amada e cuidada para sempre.",
 
-        historia:
-            "Luna foi resgatada ainda na barriga da mãe, em 2022. Sua mãe estava grávida e sendo agredida nas ruas, mas, infelizmente, apenas Luna sobreviveu. Hoje, ela é uma cachorra muito carinhosa e protetora com humanos. Ama passear e receber carinho na barriga! É de porte grande, daquelas que parecem um verdadeiro urso de pelúcia. Por não se dar bem com gatos e ter dificuldades com alguns cães, Luna seria mais feliz como filha única, recebendo todo o amor e atenção de sua família. Agora, ela espera encontrar um lar onde possa ser amada e cuidada para sempre.",
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte grande"
+},
 
-        cuidados:
-            "Castrada • Vacinada • Vermifugada • Porte grande"
-    },
 
+{
+    nome: "Ana Castela",
+    especie: "cachorro",
+    idade: "4 anos",
+    foto: "assets/animais/ana-castela.jpg",
 
-    {
-        nome: "Ana Castela",
-        especie: "cachorro",
-        idade: "4 anos",
+    historia:
+        "Ana Castela foi abandonada em Francisco Morato e acabou precisando recomeçar sua história. Hoje está segura e aguarda uma família responsável que possa oferecer todo o amor, carinho e proteção que ela merece.",
 
-        foto: "assets/animais/ana-castela.jpg",
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte médio"
+},
 
-        historia:
-            "Ana Castela foi abandonada em Francisco Morato e acabou precisando recomeçar sua história. Hoje está segura e aguarda uma família responsável que possa oferecer todo o amor, carinho e proteção que ela merece.",
 
-        cuidados:
-            "Castrada • Vacinada • Vermifugada • Porte médio"
-    },
+{
+    nome: "Joe",
+    especie: "cachorro",
+    idade: "3/4 anos",
+    foto: "assets/animais/joe.jpg",
 
+    historia:
+        "Joe foi resgatado junto com seu filho, Tigrão, em maio de 2025. Os dois viviam em um pequeno cubículo, tentando se proteger da chuva e do sol, em um espaço muito limitado no fundo de um quintal. Em agosto, Tigrão foi adotado e, cerca de um mês depois, Joe também ganhou uma família junto com seu filho. Infelizmente, quase um ano após a adoção, ele foi devolvido. Agora Joe aguarda novamente a chance de encontrar um lar definitivo, onde seja amado para sempre.",
 
-    {
-        nome: "Joe",
-        especie: "cachorro",
-        idade: "3/4 anos",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte grande"
+},
 
-        foto: "assets/animais/joe.jpg",
 
-        historia:
-            "Joe foi resgatado junto com seu filho, Tigrão, em maio de 2025. Os dois viviam em um pequeno cubículo, tentando se proteger da chuva e do sol, em um espaço muito limitado no fundo de um quintal. Em agosto, Tigrão foi adotado e, cerca de um mês depois, Joe também ganhou uma família junto com seu filho. Infelizmente, quase um ano após a adoção, ele foi devolvido. Agora Joe aguarda novamente a chance de encontrar um lar definitivo, onde seja amado para sempre.",
+{
+    nome: "Rebeca",
+    especie: "cachorro",
+    idade: "1 ano e meio",
+    foto: "assets/animais/rebeca.jpg",
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte grande"
-    },
+    historia:
+        "Rebeca foi resgatada no final de março de 2026, em Guarulhos, extremamente debilitada e muito magra. Quando foi resgatada, pesava apenas 7kg. Com cuidados, alimentação e muito carinho, se recuperou muito bem e hoje já está com 12kg. Agora está saudável e aguarda uma família para chamar de sua.",
 
+    cuidados:
+        "Vermifugada • Vacinada • Castrada • Porte pequeno/médio"
+},
 
-    {
-        nome: "Rebeca",
-        especie: "cachorro",
-        idade: "1 ano e meio",
 
-        foto: "assets/animais/rebeca.jpg",
+{
+    nome: "Hércules",
+    especie: "cachorro",
+    idade: "11 anos",
+    foto: "assets/animais/hercules.jpg",
 
-        historia:
-            "Rebeca foi resgatada no final de março de 2026, em Guarulhos, extremamente debilitada e muito magra. Quando foi resgatada, pesava apenas 7kg. Com cuidados, alimentação e muito carinho, se recuperou muito bem e hoje já está com 12kg. Agora está saudável e aguarda uma família para chamar de sua.",
+    historia:
+        "Hércules é um lindo mix de Border Collie que foi resgatado em maio de 2026 muito debilitado, magro e sem forças. Após receber todos os cuidados necessários, se recuperou completamente e hoje está saudável e cheio de vida. Dócil, muito carinhoso e inteligente, adora passear, aprende comandos com facilidade e ama receber atenção. Agora, Hércules aguarda uma família que lhe ofereça o amor e a segurança que sempre mereceu.",
 
-        cuidados:
-            "Vermifugada • Vacinada • Castrada • Porte pequeno/médio"
-    },
+    cuidados:
+        "Vacinado • Vermifugado • Porte médio/grande"
+},
 
 
-    {
-        nome: "Hércules",
-        especie: "cachorro",
-        idade: "11 anos",
+{
+    nome: "Nick",
+    especie: "cachorro",
+    idade: "7/8 anos",
+    foto: "assets/animais/nick.jpg",
 
-        foto: "assets/animais/hercules.jpg",
+    historia:
+        "Nick é um cãozinho dócil e medroso, que se dá bem com cães e gatos. Ele entrou na casa de uma protetora quando encontrou o portão aberto, procurando abrigo. Estava muito judiado, com medo e com muita fome. Hoje está em lar temporário, mas como vive com muitos cães, acaba ficando com medo e só consegue comer quando é separado. Nick espera uma família que lhe dê segurança, paciência e muito amor.",
 
-        historia:
-            "Hércules é um lindo mix de Border Collie que foi resgatado em maio de 2026 muito debilitado, magro e sem forças. Após receber todos os cuidados necessários, se recuperou completamente e hoje está saudável e cheio de vida. Dócil, muito carinhoso e inteligente, adora passear, aprende comandos com facilidade e ama receber atenção. Agora, Hércules aguarda uma família que lhe ofereça o amor e a segurança que sempre mereceu.",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte pequeno/médio"
+},
 
-        cuidados:
-            "Vacinado • Vermifugado • Porte médio/grande"
-    },
 
+{
+    nome: "Athena",
+    especie: "cachorro",
+    idade: "2 anos",
+    foto: "assets/animais/athena.jpg",
 
-    {
-        nome: "Nick",
-        especie: "cachorro",
-        idade: "7/8 anos",
+    historia:
+        "Athena foi abandonada pela própria tutora e, ao ser levada para castração, descobrimos que ela já era castrada e possuía microchip. Muito amorosa e dócil, Athena se dá super bem com outros animais e só espera encontrar uma família que realmente a ame e cuide dela para sempre.",
 
-        foto: "assets/animais/nick.jpg",
+    cuidados:
+        "Castrada • Vacinada • Porte médio"
+},
 
-        historia:
-            "Nick é um cãozinho dócil e medroso, que se dá bem com cães e gatos. Ele entrou na casa de uma protetora quando encontrou o portão aberto, procurando abrigo. Estava muito judiado, com medo e com muita fome. Hoje está em lar temporário, mas como vive com muitos cães, acaba ficando com medo e só consegue comer quando é separado. Nick espera uma família que lhe dê segurança, paciência e muito amor.",
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte pequeno/médio"
-    },
+{
+    nome: "Shakira",
+    especie: "cachorro",
+    idade: "3 anos",
+    foto: "assets/animais/shakira.jpg",
 
+    historia:
+        "Shakira foi encontrada prenha nas ruas, já prestes a dar à luz. Felizmente, seus filhotes foram todos adotados, mas ninguém quis dar uma chance para a mamãe. Ela é super dócil, amorosa, tranquila e se dá muito bem com outros cães. Agora, Shakira espera que finalmente alguém enxergue todo o amor que ela tem para oferecer e escolha ser sua família.",
 
-    {
-        nome: "Athena",
-        especie: "cachorro",
-        idade: "2 anos",
+    cuidados:
+        "Castrada • Vacinada • Porte médio"
+},
 
-        foto: "assets/animais/athena.jpg",
 
-        historia:
-            "Athena foi abandonada pela própria tutora e, ao ser levada para castração, descobrimos que ela já era castrada e possuía microchip. Muito amorosa e dócil, Athena se dá super bem com outros animais e só espera encontrar uma família que realmente a ame e cuide dela para sempre.",
+/* =====================================================
+   NINHADA HE-MAN E SHE-RA
+   ===================================================== */
 
-        cuidados:
-            "Castrada • Vacinada • Porte médio"
-    },
 
+{
+    nome: "She-ra",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/she-ra.jpg",
 
-    {
-        nome: "Shakira",
-        especie: "cachorro",
-        idade: "3 anos",
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        foto: "assets/animais/shakira.jpg",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        historia:
-            "Shakira foi encontrada prenha nas ruas, já prestes a dar à luz. Felizmente, seus filhotes foram todos adotados, mas ninguém quis dar uma chance para a mamãe. Ela é super dócil, amorosa, tranquila e se dá muito bem com outros cães. Agora, Shakira espera que finalmente alguém enxergue todo o amor que ela tem para oferecer e escolha ser sua família.",
 
-        cuidados:
-            "Castrada • Vacinada • Porte médio"
-    },
+{
+    nome: "Cintilante",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/cintilante.jpg",
 
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-    /* =================================================
-       NINHADA HE-MAN E SHE-RA
-       ================================================= */
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
 
-    {
-        nome: "She-ra",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+{
+    nome: "Teela",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/teela.jpg",
 
-        foto: "assets/animais/she-ra.jpg",
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+{
+    nome: "He-man",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/he-man.jpg",
 
-    {
-        nome: "Cintilante",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        foto: "assets/animais/cintilante.jpg",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+{
+    nome: "Pacato",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/pacato.jpg",
 
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-    {
-        nome: "Teela",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        foto: "assets/animais/teela.jpg",
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
+{
+    nome: "Rei Randor",
+    especie: "cachorro",
+    idade: "5 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/rei-randor.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-    {
-        nome: "He-man",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
 
-        foto: "assets/animais/he-man.jpg",
+{
+    nome: "Ventania",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/ventania.jpg",
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
 
-    {
-        nome: "Pacato",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+{
+    nome: "Arqueiro",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/arqueiro.jpg",
 
-        foto: "assets/animais/pacato.jpg",
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+{
+    nome: "Corujito",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "He-Man e She-Ra",
+    foto: "assets/animais/corujito.jpg",
 
-    {
-        nome: "Rei Randor",
-        especie: "cachorro",
-        idade: "5 meses",
-        ninhada: "He-Man e She-Ra",
+    historia:
+        "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        foto: "assets/animais/rei-randor.jpg",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+/* =====================================================
+   OUTROS CACHORROS
+   ===================================================== */
 
 
-    {
-        nome: "Ventania",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+{
+    nome: "Aurora",
+    especie: "cachorro",
+    idade: "9 meses",
+    foto: "assets/animais/aurora.jpg",
 
-        foto: "assets/animais/ventania.jpg",
+    historia:
+        "Aurora tinha uma família, mas foi deixada para trás quando eles se mudaram. Ela permaneceu por um tempo de favor em um quintal, até que foi levada para ser castrada. Infelizmente, quando voltou, não aceitaram mais que ela permanecesse no local. Desde então, Aurora aguarda uma nova chance. É uma cadelinha que merece encontrar uma família de verdade, que a acolha com amor, segurança e nunca mais a abandone.",
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+{
+    nome: "Zeus",
+    especie: "cachorro",
+    idade: "3 anos",
+    foto: "assets/animais/zeus.jpg",
 
-    {
-        nome: "Arqueiro",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+    historia:
+        "Zeus viveu meses em uma casa abandonada no Embu, após a morte de sua tutora. Ficava preso em um quintal cheio de lixo e, infelizmente, sofria agressões. Quando foi resgatado, estava muito magro e precisou de cuidados para recuperar suas forças. Hoje, Zeus é um cão alegre, carinhoso e cheio de amor para dar. Adora ficar pertinho, dar lambeijos e se dá muito bem com outros cães, gatos e crianças. No abrigo, inclusive, cuidava dos filhotes que chegavam. Também adora passear e é tranquilo na guia. Zeus é um verdadeiro sonho de cachorro caramelo e merece finalmente ter uma família para amar e ser amado.",
 
-        foto: "assets/animais/arqueiro.jpg",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte médio"
+},
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+{
+    nome: "Belo",
+    especie: "cachorro",
+    idade: "2/3 anos",
+    foto: "assets/animais/belo.jpg",
 
+    historia:
+        "Belo foi resgatado no Grajaú após vagar por dias sozinho, pedindo atenção e comida. Já passou por exames (parvovirose, cinomose, giárdia e doença do carrapato), todos com resultado negativo. É extremamente tranquilo, amoroso e muito “zen”. Convive bem com outros animais e não demonstrou incômodo no lar temporário.",
 
-    {
-        nome: "Corujito",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "He-Man e She-Ra",
+    cuidados:
+        "Vacinado • Vermifugado • Castrado • Porte médio"
+},
 
-        foto: "assets/animais/corujito.jpg",
 
-        historia:
-            "Os filhotes da Ninhada He-Man e She-Ra nasceram de uma mãezinha que vivia na periferia e não havia sido castrada. Assumimos a castração da mãe e acolhemos os filhotes para que todos tenham a oportunidade de encontrar lares responsáveis através da adoção consciente. Hoje, eles aguardam famílias cheias de amor para começarem uma nova história, com todo o cuidado e proteção que merecem.",
+{
+    nome: "Olívia",
+    especie: "cachorro",
+    idade: "2 anos",
+    foto: "assets/animais/olivia.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    historia:
+        "Olívia foi encontrada nas ruas junto com seus filhotes, Oscar e Oceane. Desde então, os três estão seguros e aguardam uma família para chamar de sua. Oscar tem uma sequela em uma das patinhas, provavelmente causada por algo que aconteceu quando ainda era muito pequeno e vivia nas ruas. Ele já passou por avaliação veterinária e, apesar da limitação, leva uma vida normal e feliz, brincando e aproveitando cada momento. Essa família tão especial merece uma chance de conhecer o amor e a segurança de um lar definitivo.",
 
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte médio"
+},
 
-    /* =================================================
-       OUTROS CACHORROS
-       ================================================= */
 
+{
+    nome: "Oceane",
+    especie: "cachorro",
+    idade: "3 meses",
+    ninhada: "Filhotes da Olívia",
+    foto: "assets/animais/oceane.jpg",
 
-    {
-        nome: "Aurora",
-        especie: "cachorro",
-        idade: "9 meses",
+    historia:
+        "Olívia foi encontrada nas ruas junto com seus filhotes, Oscar e Oceane. Desde então, os três estão seguros e aguardam uma família para chamar de sua. Essa família tão especial merece uma chance de conhecer o amor e a segurança de um lar definitivo.",
 
-        foto: "assets/animais/aurora.jpg",
+    cuidados:
+        "Vacinada • Vermifugada • Porte médio"
+},
 
-        historia:
-            "Aurora tinha uma família, mas foi deixada para trás quando eles se mudaram. Ela permaneceu por um tempo de favor em um quintal, até que foi levada para ser castrada. Infelizmente, quando voltou, não aceitaram mais que ela permanecesse no local. Desde então, Aurora aguarda uma nova chance. É uma cadelinha que merece encontrar uma família de verdade, que a acolha com amor, segurança e nunca mais a abandone.",
 
-        cuidados:
-            "Castrada • Vacinada • Vermifugada • Porte médio"
-    },
+{
+    nome: "Oscar",
+    especie: "cachorro",
+    idade: "2 meses",
+    ninhada: "Filhotes da Olívia",
+    foto: "assets/animais/oscar.jpg",
 
+    historia:
+        "Olívia foi encontrada nas ruas junto com seus filhotes, Oscar e Oceane. Desde então, os três estão seguros e aguardam uma família para chamar de sua. Oscar tem uma sequela em uma das patinhas, provavelmente causada por algo que aconteceu quando ainda era muito pequeno e vivia nas ruas. Ele já passou por avaliação veterinária e, apesar da limitação, leva uma vida normal e feliz, brincando e aproveitando cada momento. Essa família tão especial merece uma chance de conhecer o amor e a segurança de um lar definitivo.",
 
-    {
-        nome: "Zeus",
-        especie: "cachorro",
-        idade: "3 anos",
+    cuidados:
+        "Vacinado • Vermifugado • Porte médio"
+},
 
-        foto: "assets/animais/zeus.jpg",
 
-        historia:
-            "Zeus viveu meses em uma casa abandonada no Embu, após a morte de sua tutora. Ficava preso em um quintal cheio de lixo e, infelizmente, sofria agressões. Quando foi resgatado, estava muito magro e precisou de cuidados para recuperar suas forças. Hoje, Zeus é um cão alegre, carinhoso e cheio de amor para dar. Adora ficar pertinho, dar lambeijos e se dá muito bem com outros cães, gatos e crianças. No abrigo, inclusive, cuidava dos filhotes que chegavam. Também adora passear e é tranquilo na guia. Zeus é um verdadeiro sonho de cachorro caramelo e merece finalmente ter uma família para amar e ser amado.",
+/* =====================================================
+   NINHADA CHICLETES
+   ===================================================== */
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte médio"
-    },
 
+{
+    nome: "Bazooka",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/bazooka.jpg",
 
-    {
-        nome: "Belo",
-        especie: "cachorro",
-        idade: "2/3 anos",
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        foto: "assets/animais/belo.jpg",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        historia:
-            "Belo foi resgatado no Grajaú após vagar por dias sozinho, pedindo atenção e comida. Já passou por exames (parvovirose, cinomose, giárdia e doença do carrapato), todos com resultado negativo. É extremamente tranquilo, amoroso e muito “zen”. Convive bem com outros animais e não demonstrou incômodo no lar temporário.",
 
-        cuidados:
-            "Vacinado • Vermifugado • Castrado • Porte médio"
-    },
+{
+    nome: "Trident",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/trident.jpg",
 
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-    {
-        nome: "Olívia",
-        especie: "cachorro",
-        idade: "2 anos",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        foto: "assets/animais/olivia.jpg",
 
-        historia:
-            "Olívia foi encontrada nas ruas junto com seus filhotes, Oscar e Oceane. Desde então, os três estão seguros e aguardam uma família para chamar de sua. Oscar tem uma sequela em uma das patinhas, provavelmente causada por algo que aconteceu quando ainda era muito pequeno e vivia nas ruas. Ele já passou por avaliação veterinária e, apesar da limitação, leva uma vida normal e feliz, brincando e aproveitando cada momento. Essa família tão especial merece uma chance de conhecer o amor e a segurança de um lar definitivo.",
+{
+    nome: "Fini",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/fini.jpg",
 
-        cuidados:
-            "Castrada • Vacinada • Vermifugada • Porte médio"
-    },
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-    {
-        nome: "Oceane",
-        especie: "cachorro",
-        idade: "3 meses",
-        ninhada: "Filhotes da Olívia",
 
-        foto: "assets/animais/oceane.jpg",
+{
+    nome: "Plutonita",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/plutonita.jpg",
 
-        historia:
-            "Olívia foi encontrada nas ruas junto com seus filhotes, Oscar e Oceane. Desde então, os três estão seguros e aguardam uma família para chamar de sua. Essa família tão especial merece uma chance de conhecer o amor e a segurança de um lar definitivo.",
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        cuidados:
-            "Vacinado • Vermifugado • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
 
-    {
-        nome: "Oscar",
-        especie: "cachorro",
-        idade: "2 meses",
-        ninhada: "Filhotes da Olívia",
+{
+    nome: "Gloop",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/gloop.jpg",
 
-        foto: "assets/animais/oscar.jpg",
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        historia:
-            "Olívia foi encontrada nas ruas junto com seus filhotes, Oscar e Oceane. Desde então, os três estão seguros e aguardam uma família para chamar de sua. Oscar tem uma sequela em uma das patinhas, provavelmente causada por algo que aconteceu quando ainda era muito pequeno e vivia nas ruas. Ele já passou por avaliação veterinária e, apesar da limitação, leva uma vida normal e feliz, brincando e aproveitando cada momento. Essa família tão especial merece uma chance de conhecer o amor e a segurança de um lar definitivo.",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        cuidados:
-            "Vacinado • Vermifugado • Porte médio"
-    },
 
+{
+    nome: "Mentos",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/mentos.jpg",
 
-    /* =================================================
-       NINHADA CHICLETES
-       ================================================= */
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-    {
-        nome: "Bazooka",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
 
-        foto: "assets/animais/bazooka.jpg",
+{
+    nome: "Hubba Bubbles",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/hubba-bubbles.jpg",
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
 
-    {
-        nome: "Trident",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
+{
+    nome: "Chiclets",
+    especie: "cachorro",
+    idade: "Nasc. 27.07.26",
+    ninhada: "Chicletes",
+    foto: "assets/animais/chiclets.jpg",
 
-        foto: "assets/animais/trident.jpg",
+    historia:
+        "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+/* =====================================================
+   OUTROS
+   ===================================================== */
 
-    {
-        nome: "Fini",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
 
-        foto: "assets/animais/fini.jpg",
+{
+    nome: "Ziggy",
+    especie: "cachorro",
+    idade: "5 meses",
+    foto: "assets/animais/ziggy.jpg",
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
+    historia:
+        "Ziggy foi resgatado ainda na barriga da mamãe e, desde então, espera pela chance de conhecer um lar cheio de amor. Agora, esse pequeno está em busca de uma família para crescer cercado de carinho e cuidado.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    cuidados:
+        "Castrado • Vacinado • Porte médio"
+},
 
 
-    {
-        nome: "Plutonita",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
+{
+    nome: "Julie",
+    especie: "cachorro",
+    idade: "2 anos",
+    foto: "assets/animais/julie.jpg",
 
-        foto: "assets/animais/plutonita.jpg",
+    historia:
+        "Julie foi abandonada durante o cio, atropelada e ainda enfrentou uma grave infecção. Foi resgatada e reabilitada, mas tudo o que sofreu não foi capaz de apagar sua doçura. Hoje, Julie só espera encontrar uma família que lhe dê todo o amor e cuidado que sempre mereceu.",
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
+    cuidados:
+        "Vacinada • Castrada • Porte médio/grande"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+{
+    nome: "Pitucha",
+    especie: "cachorro",
+    idade: "9 anos",
+    foto: "assets/animais/pitucha.jpg",
 
-    {
-        nome: "Gloop",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
+    historia:
+        "Pitucha foi resgatada após ser abandonada no Tatuapé. Agora está segura e esperando a oportunidade de encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        foto: "assets/animais/gloop.jpg",
+    cuidados:
+        "Vacinada • Castrada • Vermifugada • Porte médio"
+},
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+/* =====================================================
+   NINHADA A
+   ===================================================== */
 
 
-    {
-        nome: "Mentos",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
+{
+    nome: "Atlas",
+    especie: "cachorro",
+    idade: "4 meses",
+    ninhada: "Ninhada A",
+    foto: "assets/animais/atlas.jpg",
 
-        foto: "assets/animais/mentos.jpg",
+    historia:
+        "Os filhotes da Ninhada A foram encontrados abandonados em uma ocupação na região de São Mateus. Hoje estão seguros, recebendo todos os cuidados necessários e aguardando famílias responsáveis para começarem uma nova história cheia de amor, carinho e proteção.",
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
+    cuidados:
+        "Vacinados • Castrados • Vermifugados • Porte médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+{
+    nome: "Asher",
+    especie: "cachorro",
+    idade: "3 meses",
+    ninhada: "Ninhada A",
+    foto: "assets/animais/asher.jpg",
 
-    {
-        nome: "Hubba Bubbles",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
+    historia:
+        "Os filhotes da Ninhada A foram encontrados abandonados em uma ocupação na região de São Mateus. Hoje estão seguros, recebendo todos os cuidados necessários e aguardando famílias responsáveis para começarem uma nova história cheia de amor, carinho e proteção.",
 
-        foto: "assets/animais/hubba-bubbles.jpg",
+    cuidados:
+        "Vacinados • Castrados • Vermifugados • Porte médio"
+},
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+{
+    nome: "Adriel",
+    especie: "cachorro",
+    idade: "4 meses",
+    ninhada: "Ninhada A",
+    foto: "assets/animais/adriel.jpg",
 
+    historia:
+        "Os filhotes da Ninhada A foram encontrados abandonados em uma ocupação na região de São Mateus. Hoje estão seguros, recebendo todos os cuidados necessários e aguardando famílias responsáveis para começarem uma nova história cheia de amor, carinho e proteção.",
 
-    {
-        nome: "Chiclets",
-        especie: "cachorro",
-        idade: "Nasc. 27.07.26",
-        ninhada: "Chicletes",
+    cuidados:
+        "Vacinados • Castrados • Vermifugados • Porte médio"
+},
 
-        foto: "assets/animais/chiclets.jpg",
 
-        historia:
-            "Esses pequenos foram resgatados após serem abandonados em Embu. Agora estão seguros e prontos para encontrar famílias que possam oferecer todo o amor e cuidado que merecem.",
+{
+    nome: "Aninha",
+    especie: "cachorro",
+    idade: "1 ano",
+    foto: "assets/animais/aninha.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    historia:
+        "Aninha foi resgatada no Itaim Paulista após dar à luz em um córrego de esgoto. Infelizmente, seus filhotes foram morrendo ainda no local, mas ela sobreviveu e agora está pronta para recomeçar. No primeiro contato, pode ser um pouco arisca, mas quando percebe que está segura, vira um verdadeiro grude! É muito carinhosa, brincalhona, se dá bem com crianças e outros animais. Aninha só precisa de uma família que lhe mostre que as ruas ficaram para trás e que agora ela pode ser muito amada.",
 
+    cuidados:
+        "Castrada • Vacinada • Porte pequeno"
+},
 
-    {
-        nome: "Ziggy",
-        especie: "cachorro",
-        idade: "5 meses",
 
-        foto: "assets/animais/ziggy.jpg",
+/* =====================================================
+   VAI QUE COLA
+   ===================================================== */
 
-        historia:
-            "Ziggy foi resgatado ainda na barriga da mamãe e, desde então, espera pela chance de conhecer um lar cheio de amor. Agora, esse pequeno está em busca de uma família para crescer cercado de carinho e cuidado.",
 
-        cuidados:
-            "Castrado • Vacinado • Porte médio"
-    },
+{
+    nome: "Terezinha",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Vai Que Cola",
+    foto: "assets/animais/terezinha.jpg",
 
+    historia:
+        "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
-    {
-        nome: "Julie",
-        especie: "cachorro",
-        idade: "2 anos",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        foto: "assets/animais/julie.jpg",
 
-        historia:
-            "Julie foi abandonada durante o cio, atropelada e ainda enfrentou uma grave infecção. Foi resgatada e reabilitada, mas tudo o que sofreu não foi capaz de apagar sua doçura. Hoje, Julie só espera encontrar uma família que lhe dê todo o amor e cuidado que sempre mereceu.",
+{
+    nome: "Jéssica",
+    especie: "cachorro",
+    idade: "3 meses",
+    ninhada: "Vai Que Cola",
+    foto: "assets/animais/jessica.jpg",
 
-        cuidados:
-            "Vacinada • Castrada • Porte médio/grande"
-    },
+    historia:
+        "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-    {
-        nome: "Pitucha",
-        especie: "cachorro",
-        idade: "9 anos",
 
-        foto: "assets/animais/pitucha.jpg",
+{
+    nome: "Velna",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Vai Que Cola",
+    foto: "assets/animais/velna.jpg",
 
-        historia:
-            "Pitucha foi resgatada após ser abandonada no Tatuapé. Agora está segura e esperando a oportunidade de encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
+    historia:
+        "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
-        cuidados:
-            "Vacinada • Castrada • Vermifugada • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
 
-    /* =================================================
-       NINHADA A
-       ================================================= */
+{
+    nome: "Gabi do Lins",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Vai Que Cola",
+    foto: "assets/animais/gabi-do-lins.jpg",
 
+    historia:
+        "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
-    {
-        nome: "Atlas",
-        especie: "cachorro",
-        idade: "4 meses",
-        ninhada: "Ninhada A",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-        foto: "assets/animais/atlas.jpg",
 
-        historia:
-            "Os filhotes da Ninhada A foram encontrados abandonados em uma ocupação na região de São Mateus. Hoje estão seguros, recebendo todos os cuidados necessários e aguardando famílias responsáveis para começarem uma nova história cheia de amor, carinho e proteção.",
+{
+    nome: "Valdo",
+    especie: "cachorro",
+    idade: "3 meses",
+    ninhada: "Vai Que Cola",
+    foto: "assets/animais/valdo.jpg",
 
-        cuidados:
-            "Vacinados • Castrados • Vermifugados • Porte médio"
-    },
+    historia:
+        "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
-    {
-        nome: "Asher",
-        especie: "cachorro",
-        idade: "3 meses",
-        ninhada: "Ninhada A",
 
-        foto: "assets/animais/asher.jpg",
+{
+    nome: "Wilson",
+    especie: "cachorro",
+    idade: "3 meses",
+    ninhada: "Vai Que Cola",
+    foto: "assets/animais/wilson.jpg",
 
-        historia:
-            "Os filhotes da Ninhada A foram encontrados abandonados em uma ocupação na região de São Mateus. Hoje estão seguros, recebendo todos os cuidados necessários e aguardando famílias responsáveis para começarem uma nova história cheia de amor, carinho e proteção.",
+    historia:
+        "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
-        cuidados:
-            "Vacinados • Castrados • Vermifugados • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Porte médio"
+},
 
 
-    {
-        nome: "Adriel",
-        especie: "cachorro",
-        idade: "4 meses",
-        ninhada: "Ninhada A",
+{
+    nome: "Tatu",
+    especie: "cachorro",
+    idade: "6 meses",
+    foto: "assets/animais/tatu.jpg",
 
-        foto: "assets/animais/adriel.jpg",
+    historia:
+        "Tatu foi resgatado extremamente debilitado, com a pele toda tomada pela sarna. Recebeu o tratamento necessário, se recuperou e agora está liberado para adoção! Depois de tudo que enfrentou, Tatu só espera encontrar uma família que lhe ofereça todo o amor e cuidado que merece.",
 
-        historia:
-            "Os filhotes da Ninhada A foram encontrados abandonados em uma ocupação na região de São Mateus. Hoje estão seguros, recebendo todos os cuidados necessários e aguardando famílias responsáveis para começarem uma nova história cheia de amor, carinho e proteção.",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte pequeno"
+},
 
-        cuidados:
-            "Vacinados • Castrados • Vermifugados • Porte médio"
-    },
 
+{
+    nome: "Pitucho",
+    especie: "cachorro",
+    idade: "1 ano",
+    foto: "assets/animais/pitucho.jpg",
 
-    {
-        nome: "Aninha",
-        especie: "cachorro",
-        idade: "1 ano",
+    historia:
+        "Pitucho foi resgatado após ser abandonado em Francisco Morato. Agora está seguro e esperando a oportunidade de encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        foto: "assets/animais/aninha.jpg",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte pequeno"
+},
 
-        historia:
-            "Aninha foi resgatada no Itaim Paulista após dar à luz em um córrego de esgoto. Infelizmente, seus filhotes foram morrendo ainda no local, mas ela sobreviveu e agora está pronta para recomeçar. No primeiro contato, pode ser um pouco arisca, mas quando percebe que está segura, vira um verdadeiro grude! É muito carinhosa, brincalhona, se dá bem com crianças e outros animais. Aninha só precisa de uma família que lhe mostre que as ruas ficaram para trás e que agora ela pode ser muito amada.",
 
-        cuidados:
-            "Castrada • Vacinada • Porte pequeno"
-    },
+/* =====================================================
+   SALGADINHOS
+   ===================================================== */
 
 
-    /* =================================================
-       VAI QUE COLA
-       ================================================= */
+{
+    nome: "Pringles",
+    especie: "cachorro",
+    idade: "35 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/pringles.jpg",
 
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-    {
-        nome: "Terezinha",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Vai Que Cola",
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
-        foto: "assets/animais/terezinha.jpg",
 
-        historia:
-            "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
+{
+    nome: "Torcida",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/torcida.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
-    {
-        nome: "Jéssica",
-        especie: "cachorro",
-        idade: "3 meses",
-        ninhada: "Vai Que Cola",
 
-        foto: "assets/animais/jessica.jpg",
+{
+    nome: "Ruffles",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/ruffles.jpg",
 
-        historia:
-            "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
 
-    {
-        nome: "Velna",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Vai Que Cola",
+{
+    nome: "Lay’s",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/lays.jpg",
 
-        foto: "assets/animais/velna.jpg",
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-        historia:
-            "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
 
+{
+    nome: "Baconzitos",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/baconzitos.jpg",
 
-    {
-        nome: "Gabi do Lins",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Vai Que Cola",
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-        foto: "assets/animais/gabi-do-lins.jpg",
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
-        historia:
-            "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+{
+    nome: "Cheetos",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/cheetos.jpg",
 
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-    {
-        nome: "Valdo",
-        especie: "cachorro",
-        idade: "3 meses",
-        ninhada: "Vai Que Cola",
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
-        foto: "assets/animais/valdo.jpg",
 
-        historia:
-            "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
+{
+    nome: "Fandangos",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/fandangos.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
-    {
-        nome: "Wilson",
-        especie: "cachorro",
-        idade: "3 meses",
-        ninhada: "Vai Que Cola",
 
-        foto: "assets/animais/wilson.jpg",
+{
+    nome: "Doritos",
+    especie: "cachorro",
+    idade: "45 dias",
+    ninhada: "Salgadinhos",
+    foto: "assets/animais/doritos.jpg",
 
-        historia:
-            "A mãezinha da Ninhada Vai Que Cola foi resgatada prenha na Zona Leste. Hoje, ela e seus filhotes estão seguros e recebem todo o cuidado necessário, enquanto aguardam famílias responsáveis para começar uma nova história cheia de amor e proteção.",
+    historia:
+        "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Porte médio"
-    },
+    cuidados:
+        "Vermifugados • Vacinados • Porte médio/grande"
+},
 
 
-    {
-        nome: "Tatu",
-        especie: "cachorro",
-        idade: "6 meses",
+{
+    nome: "Daniel",
+    especie: "cachorro",
+    idade: "2 anos",
+    foto: "assets/animais/daniel.jpg",
 
-        foto: "assets/animais/tatu.jpg",
+    historia:
+        "Daniel foi resgatado após ser encontrado sozinho em frente a uma farmácia. Agora está seguro e espera encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        historia:
-            "Tatu foi resgatado extremamente debilitado, com a pele toda tomada pela sarna. Recebeu o tratamento necessário, se recuperou e agora está liberado para adoção! Depois de tudo que enfrentou, Tatu só espera encontrar uma família que lhe ofereça todo o amor e cuidado que merece.",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte médio"
+},
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte pequeno"
-    },
 
+{
+    nome: "Canela",
+    especie: "cachorro",
+    idade: "3/4 anos",
+    foto: "assets/animais/canela.jpg",
 
-    {
-        nome: "Pitucho",
-        especie: "cachorro",
-        idade: "1 ano",
+    historia:
+        "Canela sofreu uma facada ainda filhote e, depois de ser cuidada, passou anos vivendo na rua com pessoas que a protegiam. Como essas pessoas estão de mudança e ela corria o risco de voltar a ficar desamparada, Canela foi resgatada para ter a chance de encontrar uma família de verdade. Agora, ela está segura e pronta para um novo começo, cercado de amor e cuidado.",
 
-        foto: "assets/animais/pitucho.jpg",
+    cuidados:
+        "Vacinada • Vermifugada • Castrada • Porte médio"
+},
 
-        historia:
-            "Pitucho foi resgatado após ser abandonado em Francisco Morato. Agora está seguro e esperando a oportunidade de encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte pequeno"
-    },
+{
+    nome: "Nutella",
+    especie: "cachorro",
+    idade: "3 anos",
+    foto: "assets/animais/nutella.jpg",
 
+    historia:
+        "Nutella foi resgatada com cerca de 6 meses após ser adotada apenas para brincar com uma criança enquanto era filhote. Quando cresceu, foi deixada do lado de fora da casa, sem água e comida, passando frio e medo. Chegou a procurar alimento na rua e ainda entrou no cio antes de ser resgatada. Hoje é uma cachorrinha forte e carinhosa.",
 
-    /* =================================================
-       SALGADINHOS
-       ================================================= */
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte médio"
+},
 
 
-    {
-        nome: "Pringles",
-        especie: "cachorro",
-        idade: "35 dias",
-        ninhada: "Salgadinhos",
+/* =====================================================
+   NINHADA DEUSES
+   ===================================================== */
 
-        foto: "assets/animais/pringles.jpg",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+{
+    nome: "Kairos",
+    especie: "cachorro",
+    idade: "5 meses",
+    ninhada: "Deuses",
+    foto: "assets/animais/kairos.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
+    historia:
+        "Os filhotes da Ninhada Deuses foram resgatados em um terreno abandonado no bairro Jardim Brasília. Agora estão seguros, recebendo os cuidados necessários e esperando por famílias que possam oferecer muito amor, carinho e um lar para sempre.",
 
+    cuidados:
+        "Vacinados • Castrados • Vermifugados • Porte pequeno/médio"
+},
 
-    {
-        nome: "Torcida",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
 
-        foto: "assets/animais/torcida.jpg",
+{
+    nome: "Chronos",
+    especie: "cachorro",
+    idade: "5 meses",
+    ninhada: "Deuses",
+    foto: "assets/animais/chronos.jpg",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+    historia:
+        "Os filhotes da Ninhada Deuses foram resgatados em um terreno abandonado no bairro Jardim Brasília. Agora estão seguros, recebendo os cuidados necessários e esperando por famílias que possam oferecer muito amor, carinho e um lar para sempre.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
+    cuidados:
+        "Vacinados • Castrados • Vermifugados • Porte pequeno/médio"
+},
 
 
-    {
-        nome: "Ruffles",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
+{
+    nome: "Aion",
+    especie: "cachorro",
+    idade: "5 meses",
+    ninhada: "Deuses",
+    foto: "assets/animais/aion.jpg",
 
-        foto: "assets/animais/ruffles.jpg",
+    historia:
+        "Os filhotes da Ninhada Deuses foram resgatados em um terreno abandonado no bairro Jardim Brasília. Agora estão seguros, recebendo os cuidados necessários e esperando por famílias que possam oferecer muito amor, carinho e um lar para sempre.",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+    cuidados:
+        "Vacinados • Castrados • Vermifugados • Porte pequeno/médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
 
+{
+    nome: "Pataca",
+    especie: "cachorro",
+    idade: "1 ano",
+    foto: "assets/animais/pataca.jpg",
 
-    {
-        nome: "Lay’s",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
+    historia:
+        "Pataca foi resgatado após ser encontrado abandonado em Francisco Morato. Agora está seguro e espera encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        foto: "assets/animais/lays.jpg",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte pequeno"
+},
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
+{
+    nome: "Rascal",
+    especie: "cachorro",
+    idade: "9 meses",
+    foto: "assets/animais/rascal.jpg",
 
+    historia:
+        "Rascal foi resgatado entre os carros, na Avenida Celso Garcia, em uma situação de muito risco e quase sendo atropelado. Agora está seguro e espera encontrar uma família que lhe ofereça amor, carinho e um lar para sempre.",
 
-    {
-        nome: "Baconzitos",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte pequeno/médio"
+},
 
-        foto: "assets/animais/baconzitos.jpg",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+{
+    nome: "Maia",
+    especie: "cachorro",
+    idade: "1 ano",
+    foto: "assets/animais/maia.jpg",
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
+    historia:
+        "Maia foi resgatada de uma situação de maus-tratos, onde apanhava e muitas vezes ficava sem comida. Foi resgatada no dia 16 de setembro e agora está segura. Ela é muito carinhosa, ama crianças, se dá bem com cães e gatos e adora ficar pertinho de quem ama. É um pouco medrosa e precisa de tempo para ganhar confiança, mas depois se torna uma verdadeira companheira. Depois de tanto sofrimento, Maia está pronta para conhecer o amor de uma família e ser muito feliz.",
 
+    cuidados:
+        "Vacinada • Vermifugada • Castrada • Porte pequeno"
+},
 
-    {
-        nome: "Cheetos",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
 
-        foto: "assets/animais/cheetos.jpg",
+{
+    nome: "Liz",
+    especie: "cachorro",
+    idade: "3 meses",
+    foto: "assets/animais/liz.jpg",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+    historia:
+        "Liz foi resgatada após ser abandonada em São Mateus. Agora está segura e esperando a chance de encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
+    cuidados:
+        "Vacinada • Vermifugada • Porte médio"
+},
 
 
-    {
-        nome: "Fandangos",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
+/* =====================================================
+   NOVOS ANIMAIS — PORTFÓLIO CERET
+   ===================================================== */
 
-        foto: "assets/animais/fandangos.jpg",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+/*
+   NINHADA FAMILY MORGAN
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
+   O portfólio informa que sete bebês foram abandonados
+   dentro de uma caixa na rua. Uma pessoa os encontrou
+   e os colocou em uma casa vazia, onde permaneceram
+   confinados por cerca de um ano, recebendo cuidados
+   apenas ocasionalmente e sem alimentação e limpeza
+   adequadas. A ajuda chegou posteriormente.
+*/
 
 
-    {
-        nome: "Doritos",
-        especie: "cachorro",
-        idade: "45 dias",
-        ninhada: "Salgadinhos",
+{
+    nome: "Dexter",
+    especie: "cachorro",
+    idade: "1 ano",
+    ninhada: "Family Morgan",
+    foto: "assets/animais/dexter.jpg",
 
-        foto: "assets/animais/doritos.jpg",
+    historia:
+        "Sete bebês foram abandonados dentro de uma caixa na rua. Uma pessoa os encontrou e colocou todos dentro de uma casa vazia, onde ficaram confinados por cerca de um ano, recebendo cuidados apenas de vez em quando e sem alimentação e limpeza adequadas. Até que, finalmente, a ajuda chegou. Hoje, três deles ainda estão esperando pela chance de encontrar uma família que ofereça o amor, cuidado e segurança que nunca tiveram.",
 
-        historia:
-            "Uma família da periferia de Embu não conseguiu castrar os pais a tempo, e os filhotes acabaram nascendo. Nós resgatamos os pequenos e também encaminhamos a castração dos pais. Agora, essa turminha está segura e espera por famílias que possam oferecer muito amor e cuidado.",
+    cuidados:
+        "Vacinado • Castrado • Vermifugado • Porte médio"
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Porte médio/grande"
-    },
 
+{
+    nome: "Killer",
+    especie: "cachorro",
+    idade: "1 ano",
+    ninhada: "Family Morgan",
+    foto: "assets/animais/killer.jpg",
 
-    {
-        nome: "Daniel",
-        especie: "cachorro",
-        idade: "2 anos",
+    historia:
+        "Sete bebês foram abandonados dentro de uma caixa na rua. Uma pessoa os encontrou e colocou todos dentro de uma casa vazia, onde ficaram confinados por cerca de um ano, recebendo cuidados apenas de vez em quando e sem alimentação e limpeza adequadas. Até que, finalmente, a ajuda chegou. Hoje, três deles ainda estão esperando pela chance de encontrar uma família que ofereça o amor, cuidado e segurança que nunca tiveram.",
 
-        foto: "assets/animais/daniel.jpg",
+    cuidados:
+        "Vacinado • Castrado • Vermifugado • Porte médio"
+},
 
-        historia:
-            "Daniel foi resgatado após ser encontrado sozinho em frente a uma farmácia. Agora está seguro e espera encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte médio"
-    },
+{
+    nome: "Cooper",
+    especie: "cachorro",
+    idade: "1 ano",
+    ninhada: "Family Morgan",
+    foto: "assets/animais/cooper.jpg",
 
+    historia:
+        "Sete bebês foram abandonados dentro de uma caixa na rua. Uma pessoa os encontrou e colocou todos dentro de uma casa vazia, onde ficaram confinados por cerca de um ano, recebendo cuidados apenas de vez em quando e sem alimentação e limpeza adequadas. Até que, finalmente, a ajuda chegou. Hoje, três deles ainda estão esperando pela chance de encontrar uma família que ofereça o amor, cuidado e segurança que nunca tiveram.",
 
-    {
-        nome: "Canela",
-        especie: "cachorro",
-        idade: "3/4 anos",
+    cuidados:
+        "Vacinado • Castrado • Vermifugado • Porte médio"
+},
 
-        foto: "assets/animais/canela.jpg",
 
-        historia:
-            "Canela sofreu uma facada ainda filhote e, depois de ser cuidada, passou anos vivendo na rua com pessoas que a protegiam. Como essas pessoas estão de mudança e ela corria o risco de voltar a ficar desamparada, Canela foi resgatada para ter a chance de encontrar uma família de verdade. Agora, ela está segura e pronta para um novo começo, cercado de amor e cuidado.",
+/*
+   LAIKA
+*/
 
-        cuidados:
-            "Vacinada • Vermifugada • Castrada • Porte médio"
-    },
 
+{
+    nome: "Laika",
+    especie: "cachorro",
+    idade: "1 ano e meio",
+    foto: "assets/animais/laika.jpg",
 
-    {
-        nome: "Nutella",
-        especie: "cachorro",
-        idade: "3 anos",
+    historia:
+        "Laika é uma cachorrinha amorosa, inteligente, brincalhona e cheia de energia. Ama brincar e passear. Já teve uma tutora, mas foi deixada com a família, que não quis cuidar dela e deixava o portão aberto para que ela sumisse. Hoje está segura no abrigo e espera uma família para chamar de sua.",
 
-        foto: "assets/animais/nutella.jpg",
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte médio"
+},
 
-        historia:
-            "Nutella foi resgatada com cerca de 6 meses após ser adotada apenas para brincar com uma criança enquanto era filhote. Quando cresceu, foi deixada do lado de fora da casa, sem água e comida, passando frio e medo. Chegou a procurar alimento na rua e ainda entrou no cio antes de ser resgatada. Hoje é uma cachorrinha forte e carinhosa.",
 
-        cuidados:
-            "Castrada • Vacinada • Vermifugada • Porte médio"
-    },
+/*
+   ÍSIS
+*/
 
 
-    /* =================================================
-       NINHADA DEUSES
-       ================================================= */
+{
+    nome: "Ísis",
+    especie: "cachorro",
+    idade: "2 anos",
+    foto: "assets/animais/isis.jpg",
 
+    historia:
+        "Ísis foi resgatada em frente a uma casa enquanto estava no cio e sendo machucada por vários cães. Apesar disso, se mostrou muito dócil, carinhosa e brincalhona. Agora espera uma família cheia de amor.",
 
-    {
-        nome: "Kairos",
-        especie: "cachorro",
-        idade: "5 meses",
-        ninhada: "Deuses",
+    cuidados:
+        "Castrada • Vacinada • Vermifugada • Porte médio/grande"
+},
 
-        foto: "assets/animais/kairos.jpg",
 
-        historia:
-            "Os filhotes da Ninhada Deuses foram resgatados em um terreno abandonado no bairro Jardim Brasília. Agora estão seguros, recebendo os cuidados necessários e esperando por famílias que possam oferecer muito amor, carinho e um lar para sempre.",
+/*
+   BRUNO
+*/
 
-        cuidados:
-            "Vacinados • Castrados • Vermifugados • Porte pequeno/médio"
-    },
 
+{
+    nome: "Bruno",
+    especie: "cachorro",
+    idade: "3/4 anos",
+    foto: "assets/animais/bruno.jpg",
 
-    {
-        nome: "Chronos",
-        especie: "cachorro",
-        idade: "5 meses",
-        ninhada: "Deuses",
+    historia:
+        "Bruno foi resgatado no extremo leste, no Jardim Robru, com ferimentos na orelha e no pescoço, possivelmente vítima de espancamento. Estava com miíase e muito debilitado, precisando ficar internado para tratamento até receber alta e seguir para um lar temporário. Apesar de tudo o que sofreu, Bruno não perdeu sua doçura. É um cão muito alegre, extremamente dócil e amoroso. Se dá bem com pessoas e outros animais, anda de carro sem enjoar, quase não late e não costuma destruir objetos. Bruno é o tipo de companheiro que só quer uma chance de viver cercado de amor.",
 
-        foto: "assets/animais/chronos.jpg",
+    cuidados:
+        "Castrado • Vacinado • Vermifugado • Porte médio"
+},
 
-        historia:
-            "Os filhotes da Ninhada Deuses foram resgatados em um terreno abandonado no bairro Jardim Brasília. Agora estão seguros, recebendo os cuidados necessários e esperando por famílias que possam oferecer muito amor, carinho e um lar para sempre.",
 
-        cuidados:
-            "Vacinados • Castrados • Vermifugados • Porte pequeno/médio"
-    },
+/*
+   KELLY
+*/
 
 
-    {
-        nome: "Aion",
-        especie: "cachorro",
-        idade: "5 meses",
-        ninhada: "Deuses",
+{
+    nome: "Kelly",
+    especie: "cachorro",
+    idade: "1 ano",
+    foto: "assets/animais/kelly.jpg",
 
-        foto: "assets/animais/aion.jpg",
+    historia:
+        "Kelly é extremamente carinhosa, brincalhona e tem um jeitinho de criança! Ama crianças, adora brincar com outros animais e é uma companheira incrível. Ela foi abandonada pela antiga tutora, que alegou não ter condições de alimentá-la porque Kelly comia demais. Ficou dias chorando e com fome na porta de sua antiga casa, até ser resgatada. Hoje, está pronta para deixar esse passado para trás e fazer uma família muito feliz.",
 
-        historia:
-            "Os filhotes da Ninhada Deuses foram resgatados em um terreno abandonado no bairro Jardim Brasília. Agora estão seguros, recebendo os cuidados necessários e esperando por famílias que possam oferecer muito amor, carinho e um lar para sempre.",
+    cuidados:
+        "Castrada • Vacinada • Porte médio"
+},
 
-        cuidados:
-            "Vacinados • Castrados • Vermifugados • Porte pequeno/médio"
-    },
 
+/*
+   SCOOBY
+*/
 
-    {
-        nome: "Pataca",
-        especie: "cachorro",
-        idade: "1 ano",
 
-        foto: "assets/animais/pataca.jpg",
+{
+    nome: "Scooby",
+    especie: "cachorro",
+    idade: "1/2 anos",
+    foto: "assets/animais/scooby.jpg",
 
-        historia:
-            "Pataca foi resgatado após ser encontrado abandonado em Francisco Morato. Agora está seguro e espera encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
+    historia:
+        "Scooby foi resgatado no dia 31 de dezembro de 2025, em Itaquera, depois de se assustar com os fogos de artifício e atravessar a rua. Ele acabou sendo atingido por um carro, mas, felizmente, não teve nenhuma fratura, apenas uma luxação. Hoje, Scooby é um cachorro muito dócil e obediente. Se dá bem com cães e crianças, mas não gosta de gatos. Depois de tudo que enfrentou, ele espera encontrar uma família que lhe ofereça muito amor e um lar seguro para sempre.",
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte pequeno"
-    },
+    cuidados:
+        "Vacinado • Vermifugado • Castrado • Porte médio"
+},
 
 
-    {
-        nome: "Rascal",
-        especie: "cachorro",
-        idade: "9 meses",
+/*
+   DANTE
+*/
 
-        foto: "assets/animais/rascal.jpg",
 
-        historia:
-            "Rascal foi resgatado entre os carros, na Avenida Celso Garcia, em uma situação de muito risco e quase sendo atropelado. Agora está seguro e espera encontrar uma família que lhe ofereça amor, carinho e um lar para sempre.",
+{
+    nome: "Dante",
+    especie: "cachorro",
+    idade: "1/2 anos",
+    foto: "assets/animais/dante.jpg",
 
-        cuidados:
-            "Castrado • Vacinado • Vermifugado • Porte pequeno/médio"
-    },
+    historia:
+        "Dante foi abandonado junto com seus irmãos na rua. Uma pessoa os recolheu e colocou todos dentro de uma casa vazia, onde passaram fome, sede e viveram em condições muito precárias, até que finalmente a ajuda chegou. Hoje, Dante é um cachorro muito bonzinho e tranquilo. Se dá bem com todos os cães e, apesar de nunca ter convivido com gatos, acreditamos que possa se adaptar bem. Agora, ele espera encontrar uma família que lhe ofereça todo o amor e cuidado que merece.",
 
+    cuidados:
+        "Vacinado • Vermifugado • Castrado • Porte pequeno"
+},
 
-    {
-        nome: "Maia",
-        especie: "cachorro",
-        idade: "1 ano",
 
-        foto: "assets/animais/maia.jpg",
+/* =====================================================
+   GATOS
+   ===================================================== */
 
-        historia:
-            "Maia foi resgatada de uma situação de maus-tratos, onde apanhava e muitas vezes ficava sem comida. Foi resgatada no dia 16 de setembro e agora está segura. Ela é muito carinhosa, ama crianças, se dá bem com cães e gatos e adora ficar pertinho de quem ama. É um pouco medrosa e precisa de tempo para ganhar confiança, mas depois se torna uma verdadeira companheira. Depois de tanto sofrimento, Maia está pronta para conhecer o amor de uma família e ser muito feliz.",
 
-        cuidados:
-            "Vacinada • Vermifugada • Castrada • Porte pequeno"
-    },
+{
+    nome: "Bibi",
+    especie: "gato",
+    idade: "2 anos",
+    foto: "assets/animais/bibi.jpg",
 
+    historia:
+        "Bibi ficou três dias em trabalho de parto. Quando perceberam que os filhotes não conseguiam nascer, havia um bebê preso, ela foi resgatada às pressas. Infelizmente, nenhum dos filhotes sobreviveu. Bibi precisou passar por procedimento cirúrgico e ficou internada para se recuperar. Agora, ela merece um recomeço com cuidado, amor e a segurança de um lar que a proteja para sempre.",
 
-    {
-        nome: "Liz",
-        especie: "cachorro",
-        idade: "3 meses",
+    cuidados:
+        "Castrada • Vermifugada • Vacinada • Fiv e Felv negativo",
 
-        foto: "assets/animais/liz.jpg",
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+},
 
-        historia:
-            "Liz foi resgatada após ser abandonada em São Mateus. Agora está segura e esperando a chance de encontrar uma família que lhe ofereça muito amor, carinho e um lar para sempre.",
 
-        cuidados:
-            "Vacinada • Vermifugada • Porte médio"
-    },
+{
+    nome: "Levi",
+    especie: "gato",
+    idade: "04.09.25",
+    ninhada: "Ninhada L",
+    foto: "assets/animais/levi.jpg",
 
+    historia:
+        "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
 
-    /* =================================================
-       GATOS
-       ================================================= */
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
 
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+},
 
-    {
-        nome: "Bibi",
-        especie: "gato",
-        idade: "2 anos",
 
-        foto: "assets/animais/bibi.jpg",
+{
+    nome: "Lorena",
+    especie: "gato",
+    idade: "04.09.25",
+    ninhada: "Ninhada L",
+    foto: "assets/animais/lorena.jpg",
 
-        historia:
-            "Bibi ficou três dias em trabalho de parto. Quando perceberam que os filhotes não conseguiam nascer, havia um bebê preso, ela foi resgatada às pressas. Infelizmente, nenhum dos filhotes sobreviveu. Bibi precisou passar por procedimento cirúrgico e ficou internada para se recuperar. Agora, ela merece um recomeço com cuidado, amor e a segurança de um lar que a proteja para sempre.",
+    historia:
+        "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
 
-        cuidados:
-            "Castrada • Vermifugada • Vacinada • Fiv e Felv negativo",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
 
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    },
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+},
 
 
-    {
-        nome: "Levi",
-        especie: "gato",
-        idade: "04.09.25",
-        ninhada: "Ninhada L",
+{
+    nome: "Leona",
+    especie: "gato",
+    idade: "04.09.25",
+    ninhada: "Ninhada L",
+    foto: "assets/animais/leona.jpg",
 
-        foto: "assets/animais/levi.jpg",
+    historia:
+        "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
 
-        historia:
-            "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+},
 
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    },
 
+{
+    nome: "Leandro",
+    especie: "gato",
+    idade: "04.09.25",
+    ninhada: "Ninhada L",
+    foto: "assets/animais/leandro.jpg",
 
-    {
-        nome: "Lorena",
-        especie: "gato",
-        idade: "04.09.25",
-        ninhada: "Ninhada L",
+    historia:
+        "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
 
-        foto: "assets/animais/lorena.jpg",
+    cuidados:
+        "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
 
-        historia:
-            "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+},
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
 
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    },
+{
+    nome: "Torrada",
+    especie: "gato",
+    idade: "2 meses e meio",
+    ninhada: "Torrada e Manteiga",
+    foto: "assets/animais/torrada.jpg",
 
+    historia:
+        "Torrada e Manteiga foram abandonadas em São Mateus e agora estão seguras, esperando a chance de encontrar uma família que possa oferecer muito amor, carinho e um lar para sempre.",
 
-    {
-        nome: "Leona",
-        especie: "gato",
-        idade: "04.09.25",
-        ninhada: "Ninhada L",
+    cuidados:
+        "Vacinadas • Vermifugadas",
 
-        foto: "assets/animais/leona.jpg",
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+},
 
-        historia:
-            "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
 
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
+{
+    nome: "Manteiga",
+    especie: "gato",
+    idade: "2 meses e meio",
+    ninhada: "Torrada e Manteiga",
+    foto: "assets/animais/manteiga.jpg",
 
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    },
+    historia:
+        "Torrada e Manteiga foram abandonadas em São Mateus e agora estão seguras, esperando a chance de encontrar uma família que possa oferecer muito amor, carinho e um lar para sempre.",
 
+    cuidados:
+        "Vacinadas • Vermifugadas",
 
-    {
-        nome: "Leandro",
-        especie: "gato",
-        idade: "04.09.25",
-        ninhada: "Ninhada L",
-
-        foto: "assets/animais/leandro.jpg",
-
-        historia:
-            "A mãezinha deu cria na Zona Leste e foi resgatada junto com seus filhotes. Agora, todos estão seguros, recebendo cuidados e prontos para encontrar lares cheios de amor e responsabilidade.",
-
-        cuidados:
-            "Vermifugados • Vacinados • Castrados • Fiv e Felv negativo",
-
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    },
-
-
-    {
-        nome: "Torrada",
-        especie: "gato",
-        idade: "2 meses e meio",
-        ninhada: "Torrada e Manteiga",
-
-        foto: "assets/animais/torrada.jpg",
-
-        historia:
-            "Torrada e Manteiga foram abandonadas em São Mateus e agora estão seguras, esperando a chance de encontrar uma família que possa oferecer muito amor, carinho e um lar para sempre.",
-
-        cuidados:
-            "Vacinadas • Vermifugadas",
-
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    },
-
-
-    {
-        nome: "Manteiga",
-        especie: "gato",
-        idade: "2 meses e meio",
-        ninhada: "Torrada e Manteiga",
-
-        foto: "assets/animais/manteiga.jpg",
-
-        historia:
-            "Torrada e Manteiga foram abandonadas em São Mateus e agora estão seguras, esperando a chance de encontrar uma família que possa oferecer muito amor, carinho e um lar para sempre.",
-
-        cuidados:
-            "Vacinadas • Vermifugadas",
-
-        observacoes:
-            "Apenas para lares 100% telados e sem rota de fuga."
-    }
+    observacoes:
+        "Apenas para lares 100% telados e sem rota de fuga."
+}
 
 ];
 
@@ -1268,50 +1348,38 @@ const animais = [
    ELEMENTOS DO SITE
    ===================================================== */
 
-
 const dogGrid =
     document.getElementById("dogGrid");
-
 
 const catGrid =
     document.getElementById("catGrid");
 
-
 const searchGrid =
     document.getElementById("searchGrid");
-
 
 const searchInput =
     document.getElementById("searchInput");
 
-
 const clearSearch =
     document.getElementById("clearSearch");
-
 
 const searchResults =
     document.getElementById("resultados");
 
-
 const searchMessage =
     document.getElementById("searchMessage");
-
 
 const dogCount =
     document.getElementById("dogCount");
 
-
 const catCount =
     document.getElementById("catCount");
-
 
 const modal =
     document.getElementById("animalModal");
 
-
 const modalClose =
     document.getElementById("modalClose");
-
 
 const modalBackdrop =
     document.getElementById("modalBackdrop");
@@ -1321,27 +1389,22 @@ const modalBackdrop =
    NORMALIZAR TEXTO
    ===================================================== */
 
-
 function normalizar(texto) {
 
     return String(texto || "")
-
         .normalize("NFD")
-
         .replace(
             /[\u0300-\u036f]/g,
             ""
         )
-
         .toLowerCase();
 
 }
 
 
 /* =====================================================
-   CRIAR PLACEHOLDER DE FOTO
+   PLACEHOLDER
    ===================================================== */
-
 
 function criarPlaceholderFoto(
     nome,
@@ -1381,7 +1444,6 @@ function criarPlaceholderFoto(
    CRIAR CARD
    ===================================================== */
 
-
 function criarCard(animal) {
 
     const foto =
@@ -1404,6 +1466,7 @@ function criarCard(animal) {
 
     const fotoHTML =
         foto
+
             ? `
 
                 <img
@@ -1412,9 +1475,12 @@ function criarCard(animal) {
                     loading="lazy"
                 >
 
-                ${criarPlaceholderFoto(animal.nome)}
+                ${criarPlaceholderFoto(
+                    animal.nome
+                )}
 
               `
+
             : criarPlaceholderFoto(
                 animal.nome
             );
@@ -1434,35 +1500,49 @@ function criarCard(animal) {
             <div class="card-top">
 
                 <span class="tag">
+
                     ${especieTexto}
+
                 </span>
 
             </div>
 
 
             <h3>
+
                 ${animal.nome}
+
             </h3>
 
 
             ${
                 animal.idade
+
                     ? `
+
                         <p class="age">
+
                             ${animal.idade}
+
                         </p>
+
                       `
+
                     : ""
             }
 
 
             <p class="story-preview">
+
                 ${animal.historia || ""}
+
             </p>
 
 
             <div class="read-more">
+
                 Conhecer história →
+
             </div>
 
         </div>
@@ -1528,14 +1608,18 @@ function criarCard(animal) {
 
 
 /* =====================================================
-   RENDERIZAR ANIMAIS
+   RENDERIZAR
    ===================================================== */
-
 
 function renderizarAnimais(
     lista,
     elemento
 ) {
+
+    if (!elemento) {
+        return;
+    }
+
 
     elemento.innerHTML = "";
 
@@ -1574,7 +1658,6 @@ function renderizarAnimais(
    SEPARAR CACHORROS E GATOS
    ===================================================== */
 
-
 const cachorros =
     animais.filter(
         animal =>
@@ -1590,9 +1673,8 @@ const gatos =
 
 
 /* =====================================================
-   EXIBIR LISTAS INICIAIS
+   EXIBIR LISTAS
    ===================================================== */
-
 
 renderizarAnimais(
     cachorros,
@@ -1606,20 +1688,39 @@ renderizarAnimais(
 );
 
 
-dogCount.textContent =
-    `${cachorros.length} animais`;
+/* =====================================================
+   CONTADORES
+
+   CORREÇÃO DO ERRO QUE IMPEDIA O SCRIPT
+   DE SER EXECUTADO.
+   ===================================================== */
+
+if (dogCount) {
+
+    dogCount.textContent =
+        `${cachorros.length} animais`;
+
+}
 
 
-catCount.textContent =
-    `${gatos.length} animais`;
+if (catCount) {
+
+    catCount.textContent =
+        `${gatos.length} animais`;
+
+}
 
 
 /* =====================================================
    BUSCA
    ===================================================== */
 
-
 function realizarBusca() {
+
+    if (!searchInput || !searchResults) {
+        return;
+    }
+
 
     const termo =
         normalizar(
@@ -1633,8 +1734,12 @@ function realizarBusca() {
             "hidden"
         );
 
-        searchMessage.textContent =
-            "";
+        if (searchMessage) {
+
+            searchMessage.textContent =
+                "";
+
+        }
 
         return;
 
@@ -1645,26 +1750,25 @@ function realizarBusca() {
         animais.filter(
             function(animal) {
 
-                const texto =
-                    [
+                const texto = [
 
-                        animal.nome,
+                    animal.nome,
 
-                        animal.especie,
+                    animal.especie,
 
-                        animal.ninhada,
+                    animal.ninhada,
 
-                        animal.idade,
+                    animal.idade,
 
-                        animal.historia,
+                    animal.historia,
 
-                        animal.cuidados,
+                    animal.cuidados,
 
-                        animal.observacoes
+                    animal.observacoes
 
-                    ]
-                    .filter(Boolean)
-                    .join(" ");
+                ]
+                .filter(Boolean)
+                .join(" ");
 
 
                 return normalizar(
@@ -1688,56 +1792,90 @@ function realizarBusca() {
     );
 
 
-    searchMessage.textContent =
-        resultados.length === 1
-            ? "1 animal encontrado."
-            : `${resultados.length} animais encontrados.`;
+    if (searchMessage) {
+
+        searchMessage.textContent =
+
+            resultados.length === 1
+
+                ? "1 animal encontrado."
+
+                : `${resultados.length} animais encontrados.`;
+
+    }
 
 }
 
 
 /* =====================================================
-   BUSCA ENQUANTO DIGITA
+   BUSCAR ENQUANTO DIGITA
    ===================================================== */
 
+if (searchInput) {
 
-searchInput.addEventListener(
-    "input",
-    realizarBusca
-);
+    searchInput.addEventListener(
+        "input",
+        realizarBusca
+    );
+
+}
 
 
 /* =====================================================
    LIMPAR BUSCA
    ===================================================== */
 
+if (clearSearch) {
 
-clearSearch.addEventListener(
-    "click",
-    function() {
+    clearSearch.addEventListener(
+        "click",
+        function() {
 
-        searchInput.value =
-            "";
+            if (searchInput) {
 
-        searchResults.classList.add(
-            "hidden"
-        );
+                searchInput.value = "";
 
-        searchMessage.textContent =
-            "";
+            }
 
-        searchInput.focus();
 
-    }
-);
+            if (searchResults) {
+
+                searchResults.classList.add(
+                    "hidden"
+                );
+
+            }
+
+
+            if (searchMessage) {
+
+                searchMessage.textContent = "";
+
+            }
+
+
+            if (searchInput) {
+
+                searchInput.focus();
+
+            }
+
+        }
+    );
+
+}
 
 
 /* =====================================================
-   MODAL
+   ABRIR MODAL
    ===================================================== */
 
-
 function abrirModal(animal) {
+
+    if (!modal) {
+        return;
+    }
+
 
     const modalPhoto =
         document.getElementById(
@@ -1791,85 +1929,117 @@ function abrirModal(animal) {
         caminhoFoto(animal);
 
 
-    modalSpecies.textContent =
-        animal.especie === "gato"
-            ? "Gato"
-            : "Cachorro";
+    if (modalSpecies) {
+
+        modalSpecies.textContent =
+            animal.especie === "gato"
+                ? "Gato"
+                : "Cachorro";
+
+    }
 
 
-    modalName.textContent =
-        animal.nome;
+    if (modalName) {
+
+        modalName.textContent =
+            animal.nome;
+
+    }
 
 
-    modalAge.textContent =
-        animal.idade
-            ? `Idade: ${animal.idade}`
-            : "";
+    if (modalAge) {
+
+        modalAge.textContent =
+            animal.idade
+                ? `Idade: ${animal.idade}`
+                : "";
+
+    }
 
 
-    modalStory.textContent =
-        animal.historia ||
-        "História não cadastrada.";
+    if (modalStory) {
+
+        modalStory.textContent =
+            animal.historia ||
+            "História não cadastrada.";
+
+    }
 
 
     /* =================================================
-       FOTO DO MODAL
+       FOTO
        ================================================= */
 
+    if (modalPhoto) {
 
-    if (foto) {
+        if (foto) {
 
-        modalPhoto.innerHTML = `
+            modalPhoto.innerHTML = `
 
-            <img
-                src="${foto}"
-                alt="Foto de ${animal.nome}"
-            >
+                <img
+                    src="${foto}"
+                    alt="Foto de ${animal.nome}"
+                >
 
-            ${criarPlaceholderFoto(
-                animal.nome,
-                "modal"
-            )}
+                ${criarPlaceholderFoto(
+                    animal.nome,
+                    "modal"
+                )}
 
-        `;
-
-
-        const modalImagem =
-            modalPhoto.querySelector(
-                "img"
-            );
+            `;
 
 
-        const modalPlaceholder =
-            modalPhoto.querySelector(
-                ".modal-photo-placeholder"
-            );
+            const modalImagem =
+                modalPhoto.querySelector(
+                    "img"
+                );
 
 
-        modalPlaceholder.style.display =
-            "none";
+            const modalPlaceholder =
+                modalPhoto.querySelector(
+                    ".modal-photo-placeholder"
+                );
 
 
-        modalImagem.addEventListener(
-            "error",
-            function() {
-
-                modalImagem.style.display =
-                    "none";
+            if (modalPlaceholder) {
 
                 modalPlaceholder.style.display =
-                    "flex";
+                    "none";
 
             }
-        );
 
-    } else {
 
-        modalPhoto.innerHTML =
-            criarPlaceholderFoto(
-                animal.nome,
-                "modal"
-            );
+            if (modalImagem) {
+
+                modalImagem.addEventListener(
+                    "error",
+                    function() {
+
+                        modalImagem.style.display =
+                            "none";
+
+
+                        if (modalPlaceholder) {
+
+                            modalPlaceholder.style.display =
+                                "flex";
+
+                        }
+
+                    }
+                );
+
+            }
+
+        } else {
+
+            modalPhoto.innerHTML =
+                criarPlaceholderFoto(
+                    animal.nome,
+                    "modal"
+                );
+
+        }
 
     }
 
@@ -1878,23 +2048,26 @@ function abrirModal(animal) {
        NINHADA
        ================================================= */
 
+    if (modalLitter) {
 
-    if (animal.ninhada) {
+        if (animal.ninhada) {
 
-        modalLitter.innerHTML = `
+            modalLitter.innerHTML = `
 
-            <strong>
-                Ninhada:
-            </strong>
+                <strong>
+                    Ninhada:
+                </strong>
 
-            ${animal.ninhada}
+                ${animal.ninhada}
 
-        `;
+            `;
 
-    } else {
+        } else {
 
-        modalLitter.innerHTML =
-            "";
+            modalLitter.innerHTML =
+                "";
+
+        }
 
     }
 
@@ -1903,43 +2076,48 @@ function abrirModal(animal) {
        CUIDADOS
        ================================================= */
 
+    if (modalCare) {
 
-    modalCare.textContent =
-        animal.cuidados ||
-        "Informações não cadastradas.";
+        modalCare.textContent =
+            animal.cuidados ||
+            "Informações não cadastradas.";
+
+    }
 
 
     /* =================================================
        OBSERVAÇÕES
        ================================================= */
 
+    if (modalObs) {
 
-    if (animal.observacoes) {
+        if (animal.observacoes) {
 
-        modalObs.innerHTML = `
+            modalObs.innerHTML = `
 
-            <strong>
-                Observação
-            </strong>
+                <strong>
+                    Observação
+                </strong>
 
-            <span>
-                ${animal.observacoes}
-            </span>
+                <span>
+                    ${animal.observacoes}
+                </span>
 
-        `;
+            `;
 
-    } else {
+        } else {
 
-        modalObs.innerHTML =
-            "";
+            modalObs.innerHTML =
+                "";
+
+        }
 
     }
 
 
     /* =================================================
-       ABRIR MODAL
+       ABRIR
        ================================================= */
-
 
     modal.classList.add(
         "open"
@@ -1963,8 +2141,12 @@ function abrirModal(animal) {
    FECHAR MODAL
    ===================================================== */
 
-
 function fecharModal() {
+
+    if (!modal) {
+        return;
+    }
+
 
     modal.classList.remove(
         "open"
@@ -1988,7 +2170,6 @@ function fecharModal() {
    BOTÃO FECHAR
    ===================================================== */
 
-
 if (modalClose) {
 
     modalClose.addEventListener(
@@ -2002,7 +2183,6 @@ if (modalClose) {
 /* =====================================================
    CLICAR FORA DO MODAL
    ===================================================== */
-
 
 if (modalBackdrop) {
 
@@ -2018,14 +2198,12 @@ if (modalBackdrop) {
    TECLA ESC
    ===================================================== */
 
-
 document.addEventListener(
     "keydown",
     function(evento) {
 
         if (
-            evento.key ===
-            "Escape"
+            evento.key === "Escape"
         ) {
 
             fecharModal();
