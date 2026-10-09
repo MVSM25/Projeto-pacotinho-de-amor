@@ -1201,45 +1201,23 @@ const animais = [
 ];
 
 
+
 /* =====================================================
    ELEMENTOS DO SITE
    ===================================================== */
 
-const dogGrid =
-    document.getElementById("dogGrid");
-
-const catGrid =
-    document.getElementById("catGrid");
-
-const searchGrid =
-    document.getElementById("searchGrid");
-
-const searchInput =
-    document.getElementById("searchInput");
-
-const clearSearch =
-    document.getElementById("clearSearch");
-
-const searchResults =
-    document.getElementById("resultados");
-
-const searchMessage =
-    document.getElementById("searchMessage");
-
-const dogCount =
-    document.getElementById("dogCount");
-
-const catCount =
-    document.getElementById("catCount");
-
-const modal =
-    document.getElementById("animalModal");
-
-const modalClose =
-    document.getElementById("modalClose");
-
-const modalBackdrop =
-    document.getElementById("modalBackdrop");
+const dogGrid = document.getElementById("dogGrid");
+const catGrid = document.getElementById("catGrid");
+const searchGrid = document.getElementById("searchGrid");
+const searchInput = document.getElementById("searchInput");
+const clearSearch = document.getElementById("clearSearch");
+const searchResults = document.getElementById("resultados");
+const searchMessage = document.getElementById("searchMessage");
+const dogCount = document.getElementById("dogCount");
+const catCount = document.getElementById("catCount");
+const modal = document.getElementById("animalModal");
+const modalClose = document.getElementById("modalClose");
+const modalBackdrop = document.getElementById("modalBackdrop");
 
 
 /* =====================================================
@@ -1247,15 +1225,11 @@ const modalBackdrop =
    ===================================================== */
 
 function normalizar(texto) {
-
     return String(texto || "")
         .normalize("NFD")
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-        .toLowerCase();
-
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim();
 }
 
 
@@ -1264,257 +1238,154 @@ function normalizar(texto) {
    ===================================================== */
 
 function escaparHTML(texto) {
-
     return String(texto || "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
 }
 
 
 /* =====================================================
-   PLACEHOLDER
+   PLACEHOLDER DE FOTO
    ===================================================== */
 
-function criarPlaceholderFoto(
-    nome,
-    tipo = "card"
-) {
-
-    const classe =
-        tipo === "modal"
-            ? "modal-photo-placeholder"
-            : "foto-placeholder";
-
+function criarPlaceholderFoto(nome, tipo = "card") {
+    const classe = tipo === "modal"
+        ? "modal-photo-placeholder"
+        : "foto-placeholder";
 
     return `
-
         <div class="${classe}">
-
-            <span class="placeholder-paw">
-                🐾
-            </span>
-
-            <strong>
-                ${escaparHTML(nome)}
-            </strong>
-
-            <small>
-                Foto em breve
-            </small>
-
+            <span class="placeholder-paw">🐾</span>
+            <strong>${escaparHTML(nome)}</strong>
+            <small>Foto não disponível</small>
         </div>
-
     `;
-
 }
 
 
 /* =====================================================
-   CRIAR CARD
+   CRIAR CARD DO ANIMAL
    ===================================================== */
 
 function criarCard(animal) {
+    const card = document.createElement("article");
+    card.className = "animal-card";
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-label", `Conhecer ${animal.nome}`);
 
-    const foto =
-        caminhoFoto(animal);
+    const especieTexto = animal.especie === "gato"
+        ? "Gato"
+        : "Cachorro";
 
-
-    const card =
-        document.createElement("article");
-
-
-    card.className =
-        "animal-card";
-
-
-    const especieTexto =
-        animal.especie === "gato"
-            ? "Gato"
-            : "Cachorro";
-
-
-    const fotoHTML =
-        foto
-
-            ? `
-
-                <img
-                    src="${foto}"
-                    alt="Foto de ${escaparHTML(animal.nome)}"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-                ${criarPlaceholderFoto(
-                    animal.nome
-                )}
-
-              `
-
-            : criarPlaceholderFoto(
-                animal.nome
-            );
-
+    const foto = caminhoFoto(animal);
 
     card.innerHTML = `
-
         <div class="card-photo">
-
-            ${fotoHTML}
-
+            <img
+                src="${escaparHTML(foto)}"
+                alt="Foto de ${escaparHTML(animal.nome)}"
+                loading="lazy"
+                decoding="async"
+            >
+            ${criarPlaceholderFoto(animal.nome)}
         </div>
 
-
         <div class="card-body">
-
             <div class="card-top">
-
-                <span class="tag">
-                    ${especieTexto}
-                </span>
-
+                <span class="tag">${especieTexto}</span>
             </div>
 
-
-            <h3>
-                ${escaparHTML(animal.nome)}
-            </h3>
-
+            <h3>${escaparHTML(animal.nome)}</h3>
 
             ${
                 animal.idade
-
-                    ? `
-
-                        <p class="age">
-                            ${escaparHTML(animal.idade)}
-                        </p>
-
-                      `
-
+                    ? `<p class="age">${escaparHTML(animal.idade)}</p>`
                     : ""
             }
 
-
             <p class="story-preview">
-                ${escaparHTML(
-                    animal.historia || ""
-                )}
+                ${escaparHTML(animal.historia || "História em breve.")}
             </p>
 
-
-            <div class="read-more">
-                Conhecer história →
-            </div>
-
+            <div class="read-more">Conhecer história →</div>
         </div>
-
     `;
 
+    const imagem = card.querySelector(".card-photo img");
+    const placeholder = card.querySelector(".foto-placeholder");
 
-    const imagem =
-        card.querySelector(
-            ".card-photo img"
-        );
-
-
-    const placeholder =
-        card.querySelector(
-            ".foto-placeholder"
-        );
-
-
-    if (imagem) {
+    function mostrarPlaceholder() {
+        if (imagem) {
+            imagem.style.display = "none";
+        }
 
         if (placeholder) {
-
-            placeholder.style.display =
-                "none";
-
+            placeholder.style.display = "flex";
         }
-
-
-        imagem.addEventListener(
-            "error",
-            function() {
-
-                imagem.style.display =
-                    "none";
-
-                if (placeholder) {
-
-                    placeholder.style.display =
-                        "flex";
-
-                }
-
-            }
-        );
-
     }
 
+    if (imagem && placeholder) {
+        placeholder.style.display = "flex";
 
-    card.addEventListener(
-        "click",
-        function() {
+        imagem.addEventListener("load", () => {
+            imagem.style.display = "block";
+            placeholder.style.display = "none";
+        });
 
-            abrirModal(animal);
+        imagem.addEventListener("error", mostrarPlaceholder);
 
+        if (imagem.complete && imagem.naturalWidth > 0) {
+            imagem.style.display = "block";
+            placeholder.style.display = "none";
         }
-    );
+    }
 
+    function abrirDetalhes() {
+        abrirModal(animal);
+    }
+
+    card.addEventListener("click", abrirDetalhes);
+
+    card.addEventListener("keydown", evento => {
+        if (evento.key === "Enter" || evento.key === " ") {
+            evento.preventDefault();
+            abrirDetalhes();
+        }
+    });
 
     return card;
-
 }
 
 
 /* =====================================================
-   RENDERIZAR
+   RENDERIZAR ANIMAIS
    ===================================================== */
 
-function renderizarAnimais(
-    lista,
-    elemento
-) {
-
-    if (!elemento) {
-        return;
-    }
-
+function renderizarAnimais(lista, elemento) {
+    if (!elemento) return;
 
     elemento.innerHTML = "";
 
-
-    if (lista.length === 0) {
-
+    if (!lista || lista.length === 0) {
         elemento.innerHTML = `
-
             <div class="empty">
                 Nenhum animal encontrado.
             </div>
-
         `;
-
         return;
-
     }
 
+    const fragmento = document.createDocumentFragment();
 
-    lista.forEach(
-        function(animal) {
+    lista.forEach(animal => {
+        fragmento.appendChild(criarCard(animal));
+    });
 
-            elemento.appendChild(
-                criarCard(animal)
-            );
-
-        }
-    );
-
+    elemento.appendChild(fragmento);
 }
 
 
@@ -1522,34 +1393,21 @@ function renderizarAnimais(
    SEPARAR CACHORROS E GATOS
    ===================================================== */
 
-const cachorros =
-    animais.filter(
-        animal =>
-            animal.especie === "cachorro"
-    );
+const cachorros = animais.filter(
+    animal => normalizar(animal.especie) === "cachorro"
+);
 
-
-const gatos =
-    animais.filter(
-        animal =>
-            animal.especie === "gato"
-    );
+const gatos = animais.filter(
+    animal => normalizar(animal.especie) === "gato"
+);
 
 
 /* =====================================================
    EXIBIR LISTAS
    ===================================================== */
 
-renderizarAnimais(
-    cachorros,
-    dogGrid
-);
-
-
-renderizarAnimais(
-    gatos,
-    catGrid
-);
+renderizarAnimais(cachorros, dogGrid);
+renderizarAnimais(gatos, catGrid);
 
 
 /* =====================================================
@@ -1557,108 +1415,73 @@ renderizarAnimais(
    ===================================================== */
 
 if (dogCount) {
-
-    dogCount.textContent =
-        `${cachorros.length} animais`;
-
+    dogCount.textContent = `${cachorros.length} animais`;
 }
 
-
 if (catCount) {
-
-    catCount.textContent =
-        `${gatos.length} animais`;
-
+    catCount.textContent = `${gatos.length} animais`;
 }
 
 
 /* =====================================================
-   BUSCA
+   MOSTRAR OU OCULTAR RESULTADOS DA BUSCA
+   Compatível com hidden e com a classe hidden do CSS
+   ===================================================== */
+
+function mostrarResultadosBusca(mostrar) {
+    if (!searchResults) return;
+
+    searchResults.hidden = !mostrar;
+    searchResults.classList.toggle("hidden", !mostrar);
+}
+
+
+/* =====================================================
+   BUSCA DE ANIMAIS
    ===================================================== */
 
 function realizarBusca() {
+    if (!searchInput || !searchResults || !searchGrid) return;
 
-    if (!searchInput || !searchResults) {
-        return;
-    }
-
-
-    const termo =
-        normalizar(
-            searchInput.value.trim()
-        );
-
+    const termo = normalizar(searchInput.value);
 
     if (!termo) {
-
-        searchResults.classList.add(
-            "hidden"
-        );
+        mostrarResultadosBusca(false);
+        searchGrid.innerHTML = "";
 
         if (searchMessage) {
-
-            searchMessage.textContent =
-                "";
-
+            searchMessage.textContent = "";
         }
 
         return;
-
     }
 
+    const resultados = animais.filter(animal => {
+        const textoAnimal = [
+            animal.nome,
+            animal.especie,
+            animal.ninhada,
+            animal.idade,
+            animal.historia,
+            animal.cuidados,
+            animal.observacoes
+        ]
+            .filter(Boolean)
+            .join(" ");
 
-    const resultados =
-        animais.filter(
-            function(animal) {
+        return normalizar(textoAnimal).includes(termo);
+    });
 
-                const texto = [
-
-                    animal.nome,
-                    animal.especie,
-                    animal.ninhada,
-                    animal.idade,
-                    animal.historia,
-                    animal.cuidados,
-                    animal.observacoes
-
-                ]
-                .filter(Boolean)
-                .join(" ");
-
-
-                return normalizar(
-                    texto
-                ).includes(
-                    termo
-                );
-
-            }
-        );
-
-
-    searchResults.classList.remove(
-        "hidden"
-    );
-
-
-    renderizarAnimais(
-        resultados,
-        searchGrid
-    );
-
+    mostrarResultadosBusca(true);
+    renderizarAnimais(resultados, searchGrid);
 
     if (searchMessage) {
-
-        searchMessage.textContent =
-
-            resultados.length === 1
-
+        searchMessage.textContent = resultados.length === 0
+            ? "Nenhum animal encontrado. Tente outro termo."
+            : resultados.length === 1
                 ? "1 animal encontrado."
-
                 : `${resultados.length} animais encontrados.`;
-
     }
-
 }
 
 
@@ -1667,12 +1490,7 @@ function realizarBusca() {
    ===================================================== */
 
 if (searchInput) {
-
-    searchInput.addEventListener(
-        "input",
-        realizarBusca
-    );
-
+    searchInput.addEventListener("input", realizarBusca);
 }
 
 
@@ -1681,43 +1499,110 @@ if (searchInput) {
    ===================================================== */
 
 if (clearSearch) {
-
-    clearSearch.addEventListener(
-        "click",
-        function() {
-
-            if (searchInput) {
-
-                searchInput.value = "";
-
-            }
-
-
-            if (searchResults) {
-
-                searchResults.classList.add(
-                    "hidden"
-                );
-
-            }
-
-
-            if (searchMessage) {
-
-                searchMessage.textContent = "";
-
-            }
-
-
-            if (searchInput) {
-
-                searchInput.focus();
-
-            }
-
+    clearSearch.addEventListener("click", () => {
+        if (searchInput) {
+            searchInput.value = "";
         }
-    );
 
+        mostrarResultadosBusca(false);
+
+        if (searchGrid) {
+            searchGrid.innerHTML = "";
+        }
+
+        if (searchMessage) {
+            searchMessage.textContent = "";
+        }
+
+        if (searchInput) {
+            searchInput.focus();
+        }
+    });
+}
+
+
+/* =====================================================
+   PREENCHER FOTO DO MODAL
+   Aceita modalPhoto como IMG ou como DIV
+   ===================================================== */
+
+function preencherFotoModal(elemento, animal) {
+    if (!elemento) return;
+
+    const foto = caminhoFoto(animal);
+    const tag = elemento.tagName.toLowerCase();
+
+    if (tag === "img") {
+        elemento.alt = `Foto de ${animal.nome}`;
+        elemento.style.display = "block";
+        elemento.src = foto;
+
+        elemento.onerror = () => {
+            elemento.removeAttribute("src");
+            elemento.alt = `Foto de ${animal.nome} não disponível`;
+            elemento.style.display = "none";
+
+            const anterior = elemento.parentElement.querySelector(
+                ".modal-photo-placeholder"
+            );
+
+            if (anterior) {
+                anterior.remove();
+            }
+
+            const placeholder = document.createElement("div");
+            placeholder.innerHTML = criarPlaceholderFoto(
+                animal.nome,
+                "modal"
+            );
+
+            elemento.insertAdjacentElement("afterend", placeholder.firstElementChild);
+        };
+
+        return;
+    }
+
+    elemento.innerHTML = `
+        <img
+            src="${escaparHTML(foto)}"
+            alt="Foto de ${escaparHTML(animal.nome)}"
+            decoding="async"
+        >
+        ${criarPlaceholderFoto(animal.nome, "modal")}
+    `;
+
+    const imagem = elemento.querySelector("img");
+    const placeholder = elemento.querySelector(".modal-photo-placeholder");
+
+    if (placeholder) {
+        placeholder.style.display = "flex";
+    }
+
+    if (imagem) {
+        imagem.addEventListener("load", () => {
+            imagem.style.display = "block";
+
+            if (placeholder) {
+                placeholder.style.display = "none";
+            }
+        });
+
+        imagem.addEventListener("error", () => {
+            imagem.style.display = "none";
+
+            if (placeholder) {
+                placeholder.style.display = "flex";
+            }
+        });
+
+        if (imagem.complete && imagem.naturalWidth > 0) {
+            imagem.style.display = "block";
+
+            if (placeholder) {
+                placeholder.style.display = "none";
+            }
+        }
+    }
 }
 
 
@@ -1726,274 +1611,71 @@ if (clearSearch) {
    ===================================================== */
 
 function abrirModal(animal) {
+    if (!modal || !animal) return;
 
-    if (!modal) {
-        return;
-    }
-
-
-    const modalPhoto =
-        document.getElementById(
-            "modalPhoto"
-        );
-
-
-    const modalSpecies =
-        document.getElementById(
-            "modalSpecies"
-        );
-
-
-    const modalName =
-        document.getElementById(
-            "modalName"
-        );
-
-
-    const modalAge =
-        document.getElementById(
-            "modalAge"
-        );
-
-
-    const modalLitter =
-        document.getElementById(
-            "modalLitter"
-        );
-
-
-    const modalStory =
-        document.getElementById(
-            "modalStory"
-        );
-
-
-    const modalCare =
-        document.getElementById(
-            "modalCare"
-        );
-
-
-    const modalObs =
-        document.getElementById(
-            "modalObs"
-        );
-
-
-    const foto =
-        caminhoFoto(animal);
-
+    const modalPhoto = document.getElementById("modalPhoto");
+    const modalSpecies = document.getElementById("modalSpecies");
+    const modalName = document.getElementById("modalName");
+    const modalAge = document.getElementById("modalAge");
+    const modalLitter = document.getElementById("modalLitter");
+    const modalStory = document.getElementById("modalStory");
+    const modalCare = document.getElementById("modalCare");
+    const modalObs = document.getElementById("modalObs");
 
     if (modalSpecies) {
-
         modalSpecies.textContent =
-            animal.especie === "gato"
-                ? "Gato"
-                : "Cachorro";
-
+            animal.especie === "gato" ? "Gato" : "Cachorro";
     }
-
 
     if (modalName) {
-
-        modalName.textContent =
-            animal.nome;
-
+        modalName.textContent = animal.nome;
     }
-
 
     if (modalAge) {
-
-        modalAge.textContent =
-            animal.idade
-                ? `Idade: ${animal.idade}`
-                : "";
-
+        modalAge.textContent = animal.idade
+            ? `Idade: ${animal.idade}`
+            : "";
     }
-
 
     if (modalStory) {
-
         modalStory.textContent =
-            animal.historia ||
-            "História não cadastrada.";
-
+            animal.historia || "História não cadastrada.";
     }
 
-
-    /* =================================================
-       FOTO DO MODAL
-       ================================================= */
-
-    if (modalPhoto) {
-
-        if (foto) {
-
-            modalPhoto.innerHTML = `
-
-                <img
-                    src="${foto}"
-                    alt="Foto de ${escaparHTML(animal.nome)}"
-                    decoding="async"
-                >
-
-                ${criarPlaceholderFoto(
-                    animal.nome,
-                    "modal"
-                )}
-
-            `;
-
-
-            const modalImagem =
-                modalPhoto.querySelector(
-                    "img"
-                );
-
-
-            const modalPlaceholder =
-                modalPhoto.querySelector(
-                    ".modal-photo-placeholder"
-                );
-
-
-            if (modalPlaceholder) {
-
-                modalPlaceholder.style.display =
-                    "none";
-
-            }
-
-
-            if (modalImagem) {
-
-                modalImagem.addEventListener(
-                    "error",
-                    function() {
-
-                        modalImagem.style.display =
-                            "none";
-
-
-                        if (modalPlaceholder) {
-
-                            modalPlaceholder.style.display =
-                                "flex";
-
-                        }
-
-                    }
-                );
-
-            }
-
-        } else {
-
-            modalPhoto.innerHTML =
-                criarPlaceholderFoto(
-                    animal.nome,
-                    "modal"
-                );
-
-        }
-
-    }
-
-
-    /* =================================================
-       NINHADA
-       ================================================= */
+    preencherFotoModal(modalPhoto, animal);
 
     if (modalLitter) {
-
         if (animal.ninhada) {
-
-            modalLitter.innerHTML = `
-
-                <strong>
-                    Ninhada:
-                </strong>
-
-                ${escaparHTML(
-                    animal.ninhada
-                )}
-
-            `;
-
+            modalLitter.textContent = `Ninhada: ${animal.ninhada}`;
+            modalLitter.hidden = false;
         } else {
-
-            modalLitter.innerHTML =
-                "";
-
+            modalLitter.textContent = "";
+            modalLitter.hidden = true;
         }
-
     }
-
-
-    /* =================================================
-       CUIDADOS
-       ================================================= */
 
     if (modalCare) {
-
         modalCare.textContent =
-            animal.cuidados ||
-            "Informações não cadastradas.";
-
+            animal.cuidados || "Informações não cadastradas.";
     }
-
-
-    /* =================================================
-       OBSERVAÇÕES
-       ================================================= */
 
     if (modalObs) {
-
         if (animal.observacoes) {
-
-            modalObs.innerHTML = `
-
-                <strong>
-                    Observação
-                </strong>
-
-                <span>
-                    ${escaparHTML(
-                        animal.observacoes
-                    )}
-                </span>
-
-            `;
-
+            modalObs.textContent = `Observação: ${animal.observacoes}`;
+            modalObs.hidden = false;
         } else {
-
-            modalObs.innerHTML =
-                "";
-
+            modalObs.textContent = "";
+            modalObs.hidden = true;
         }
-
     }
 
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
 
-    /* =================================================
-       ABRIR
-       ================================================= */
-
-    modal.classList.add(
-        "open"
-    );
-
-
-    modal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
-
-
-    document.body.classList.add(
-        "modal-open"
-    );
-
+    if (modalClose) {
+        modalClose.focus();
+    }
 }
 
 
@@ -2002,181 +1684,64 @@ function abrirModal(animal) {
    ===================================================== */
 
 function fecharModal() {
+    if (!modal) return;
 
-    if (!modal) {
-        return;
-    }
-
-
-    modal.classList.remove(
-        "open"
-    );
-
-
-    modal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
-
-
-    document.body.classList.remove(
-        "modal-open"
-    );
-
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
 }
 
 
 /* =====================================================
-   BOTÃO FECHAR
+   EVENTOS DO MODAL
    ===================================================== */
 
 if (modalClose) {
-
-    modalClose.addEventListener(
-        "click",
-        fecharModal
-    );
-
+    modalClose.addEventListener("click", fecharModal);
 }
-
-
-/* =====================================================
-   CLICAR FORA DO MODAL
-   ===================================================== */
 
 if (modalBackdrop) {
-
-    modalBackdrop.addEventListener(
-        "click",
-        fecharModal
-    );
-
+    modalBackdrop.addEventListener("click", fecharModal);
 }
 
-
-/* =====================================================
-   TECLA ESC
-   ===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(evento) {
-
-        if (
-            evento.key === "Escape"
-        ) {
-
-            fecharModal();
-
-        }
-
+document.addEventListener("keydown", evento => {
+    if (evento.key === "Escape") {
+        fecharModal();
     }
-);
+});
 
 
 /* =====================================================
-   VERIFICAÇÃO DAS FOTOS
+   VERIFICAR CAMINHOS DAS FOTOS
+   Execute verificarFotos() no console do navegador
    ===================================================== */
-
-/*
-   Digite no console:
-
-   verificarFotos()
-
-   para conferir exatamente qual arquivo
-   o site está procurando para cada animal.
-*/
 
 function verificarFotos() {
+    console.group("Verificação das fotos");
 
-    console.log(
-        "======================================"
-    );
+    animais.forEach(animal => {
+        console.log(`${animal.nome} → ${caminhoFoto(animal)}`);
+    });
 
-    console.log(
-        "VERIFICAÇÃO DAS FOTOS"
-    );
+    console.log(`Total de animais: ${animais.length}`);
+    console.log(`Cachorros: ${cachorros.length}`);
+    console.log(`Gatos: ${gatos.length}`);
 
-    console.log(
-        "======================================"
-    );
-
-
-    animais.forEach(
-        function(animal) {
-
-            console.log(
-                `${animal.nome} → ${caminhoFoto(animal)}`
-            );
-
-        }
-    );
-
-
-    console.log(
-        "======================================"
-    );
-
-    console.log(
-        `Total de animais: ${animais.length}`
-    );
-
-    console.log(
-        `Cachorros: ${cachorros.length}`
-    );
-
-    console.log(
-        `Gatos: ${gatos.length}`
-    );
-
-    console.log(
-        "======================================"
-    );
-
+    console.groupEnd();
 }
 
 
 /* =====================================================
-   VERIFICAÇÃO AUTOMÁTICA DOS NOMES DOS ARQUIVOS
+   VERIFICAR NOMES DOS ARQUIVOS
+   Execute verificarNomesFotos() no console
    ===================================================== */
 
-/*
-   Esta função também pode ser executada no console:
-
-   verificarNomesFotos()
-
-   Ela mostra:
-
-   Animal → arquivo que o site procura
-*/
-
 function verificarNomesFotos() {
-
     console.table(
-
-        animais.map(
-            function(animal) {
-
-                return {
-
-                    Animal:
-                        animal.nome,
-
-                    Arquivo:
-                        nomeArquivoFoto(
-                            animal.nome
-                        ),
-
-                    Caminho:
-                        caminhoFoto(
-                            animal
-                        )
-
-                };
-
-            }
-        )
-
+        animais.map(animal => ({
+            Animal: animal.nome,
+            Arquivo: nomeArquivoFoto(animal.nome),
+            Caminho: caminhoFoto(animal)
+        }))
     );
-
 }
